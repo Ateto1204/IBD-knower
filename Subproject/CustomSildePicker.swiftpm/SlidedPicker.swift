@@ -25,6 +25,21 @@ struct SlidedPicker<Content: View>: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UIScrollView {
         let scrollView = UIScrollView()
+        let swiftUIView = UIHostingController(rootView: content).view!
+        
+        let width = itemWidth
+        let height = CGFloat(pickerCount - 2) * itemHeight + (646 + itemHeight - 50)
+        
+        swiftUIView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        swiftUIView.backgroundColor = UIColor(white: 0, alpha: 0)
+        
+        scrollView.contentSize = swiftUIView.frame.size
+        scrollView.addSubview(swiftUIView)
+        scrollView.setContentOffset(CGPoint(x: 0, y: offset), animated: false)
+        scrollView.bounces = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.delegate = context.coordinator
         
         return scrollView
     }
@@ -44,6 +59,10 @@ struct SlidedPicker<Content: View>: UIViewRepresentable {
         }
         
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
+            parent.offset = scrollView.contentOffset.y
+        }
+        
+        func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             let offset = scrollView.contentOffset.y
             
             let value = (offset / itemHeight).rounded(.toNearestOrAwayFromZero)
