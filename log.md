@@ -1,5 +1,9 @@
 # Project log
 
+#### 2024.02.06
+- Add back button to selection view
+- Add slided picker to IBD knower
+
 #### 2024.02.04
 - Complete CustomSlidePicker
 - Create IBD knower
