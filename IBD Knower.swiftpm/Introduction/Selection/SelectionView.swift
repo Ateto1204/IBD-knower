@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SelectionView: View {
+    @EnvironmentObject var selectStatus: SelectStatus
     
     @State var offset: CGFloat = 0
     @State var selectTitle: String = ""
@@ -152,6 +153,13 @@ struct SelectionView: View {
     
     func interactView(geometry: GeometryProxy) -> some View {
         VStack {
+            HStack {
+                backButton(geometry: geometry)
+                    .onTapGesture {
+                        selectStatus.setStatus(newStatus: .HOME)
+                    }
+                Spacer()
+            }
             Spacer()
             HStack {
                 Spacer()
@@ -161,6 +169,25 @@ struct SelectionView: View {
                     }
             }
         }
+    }
+    
+    func backButton(geometry: GeometryProxy) -> some View {
+        ZStack(alignment: .trailing) {
+            Diamond()
+                .foregroundColor(.white)
+                .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
+            Diamond()
+                .foregroundColor(.black)
+                .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
+                .offset(x: -10)
+            Image(systemName: "arrow.backward")
+                .resizable()
+                .foregroundColor(.white)
+                .frame(width: geometry.size.width * 0.02, height: geometry.size.height * 0.02)
+                .offset(x: -geometry.size.width * 0.02)
+        }
+        .shadow(radius: 20)
+        .offset(x: -geometry.size.width * 0.02, y: 20)
     }
     
     func detailButton(geometry: GeometryProxy) -> some View {
