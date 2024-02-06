@@ -18,14 +18,14 @@ struct SelectionView: View {
                 HStack(spacing: 0) {
                     Spacer()
                         .frame(width: geometry.size.width * 0.1)
-                    
-                    VStack(spacing: 0) {
+                    ZStack(alignment: .top) {
+                        VStack(spacing: 0) {
                             let pickerCount = 10
                             let itemWidth: CGFloat = geometry.size.width * 0.45
                             let itemHeight: CGFloat = 60
                             let offsetAngle = sin(75.0 * Double.pi / 180)
                             packButton(geometry: geometry)
-//                                .offset(x: -30)
+                            //                                .offset(x: -30)
                                 .onTapGesture {
                                     
                                 }
@@ -86,7 +86,7 @@ struct SelectionView: View {
                                 .frame(width: itemWidth, height: itemHeight * 1.2)
                                 .offset(x: -10, y: 1.6)
                                 .onChange(of: offset) { _ in 
-                                    let num = Int(offset / itemHeight) + 1
+                                    let num = Int(offset / itemHeight)
                                     self.selectTitle = "DEMO \(num)"
                                 }
                                 .onChange(of: selectTitle) { _ in 
@@ -99,6 +99,12 @@ struct SelectionView: View {
                             .offset(x: -62, y: -60)
                         }
                         .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
+                        
+                        packButton(geometry: geometry)
+                            .onTapGesture {
+                                
+                            }
+                    }
                     
                     VStack(alignment: .leading) {
                         HStack {
@@ -147,6 +153,13 @@ struct SelectionView: View {
     
     func interactView(geometry: GeometryProxy) -> some View {
         VStack {
+            HStack {
+                backButton(geometry: geometry)
+                    .onTapGesture {
+                        
+                    }
+                Spacer()
+            }
             Spacer()
             HStack {
                 Spacer()
@@ -156,6 +169,25 @@ struct SelectionView: View {
                     }
             }
         }
+    }
+    
+    func backButton(geometry: GeometryProxy) -> some View {
+        ZStack(alignment: .trailing) {
+            Diamond()
+                .foregroundColor(.white)
+                .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
+            Diamond()
+                .foregroundColor(.black)
+                .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
+                .offset(x: -10)
+            Image(systemName: "arrow.backward")
+                .resizable()
+                .foregroundColor(.white)
+                .frame(width: geometry.size.width * 0.02, height: geometry.size.height * 0.02)
+                .offset(x: -geometry.size.width * 0.02)
+        }
+        .shadow(radius: 20)
+        .offset(x: -geometry.size.width * 0.02, y: 20)
     }
     
     func detailButton(geometry: GeometryProxy) -> some View {
