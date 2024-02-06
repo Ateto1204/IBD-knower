@@ -9,7 +9,7 @@ struct ContentView: View {
             case .HOME:
                 HomeView()
             case .INTRO:
-                IntroView()
+                SelectionView()
             }
         }
         .ignoresSafeArea()
