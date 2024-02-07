@@ -28,7 +28,7 @@ struct SlidedPicker<Content: View>: UIViewRepresentable {
         let swiftUIView = UIHostingController(rootView: content).view!
         
         let width = itemWidth
-        let height = CGFloat(pickerCount - 2) * itemHeight + (646 + itemHeight - 50)
+        let height = CGFloat(pickerCount) * itemHeight + (646 + itemHeight)
         
         swiftUIView.frame = CGRect(x: 0, y: 0, width: width, height: height)
         swiftUIView.backgroundColor = UIColor(white: 0, alpha: 0)
