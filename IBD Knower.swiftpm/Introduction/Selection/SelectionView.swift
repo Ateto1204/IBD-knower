@@ -31,7 +31,7 @@ struct SelectionView: View {
                                 }
                             
                             ZStack {
-                                SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle, itemHeight: itemHeight, offset: $offset, content: {
+                                SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
                                     VStack(spacing: 0) { 
                                         ForEach(0..<10) { i in 
                                             Text("demo \(i)")
@@ -39,7 +39,7 @@ struct SelectionView: View {
                                                 .font(.system(size: 24))
                                                 .bold()
                                                 .padding(.leading, 30)
-                                                .frame(width: itemWidth * offsetAngle, height: itemHeight, alignment: .leading)
+                                                .frame(width: itemWidth * offsetAngle * 0.8, height: itemHeight, alignment: .leading)
                                                 .rotationEffect(.degrees(-15))
                                         }
                                     }
