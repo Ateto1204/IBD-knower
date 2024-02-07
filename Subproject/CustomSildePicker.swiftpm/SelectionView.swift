@@ -1,5 +1,4 @@
 import SwiftUI
-import Kingfisher
 
 struct SelectionView: View {
     
@@ -31,7 +30,7 @@ struct SelectionView: View {
                                 }
                             
                             ZStack {
-                                SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle, itemHeight: itemHeight, offset: $offset, content: {
+                                SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
                                     VStack(spacing: 0) { 
                                         ForEach(0..<10) { i in 
                                             Text("demo \(i)")
@@ -39,7 +38,7 @@ struct SelectionView: View {
                                                 .font(.system(size: 24))
                                                 .bold()
                                                 .padding(.leading, 30)
-                                                .frame(width: itemWidth * offsetAngle, height: itemHeight, alignment: .leading)
+                                                .frame(width: itemWidth * offsetAngle * 0.8, height: itemHeight, alignment: .leading)
                                                 .rotationEffect(.degrees(-15))
                                         }
                                     }
@@ -114,7 +113,7 @@ struct SelectionView: View {
                                 Text(selectTitle)
                                     .foregroundColor(.white)
                                     .font(.system(size: 24)
-                                    .bold())
+                                        .bold())
                                 HStack {
                                     Image(systemName: "music.note")
                                     Text("Subtitle")
@@ -122,7 +121,7 @@ struct SelectionView: View {
                                         .font(.system(size: 20))
                                 }
                             }
-//                            Spacer()
+                            //                            Spacer()
                         }
                         Rectangle()
                             .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
