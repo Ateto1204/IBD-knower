@@ -1,5 +1,8 @@
 # Project log
 
+#### 2024.02.08
+- Add introduction items to IBD knower
+
 #### 2024.02.07
 - Enhance stability of slided picker
 
