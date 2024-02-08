@@ -4,7 +4,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definetion()
-    let intro: IntroItem = Definetion()
+    let intro: [IntroItem] = [Definetion(), Symptom()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -20,21 +20,17 @@ struct SelectionView: View {
                         .frame(width: geometry.size.width * 0.1)
                     ZStack(alignment: .top) {
                         VStack(spacing: 0) {
-                            let pickerCount = 10
+                            let pickerCount = intro.count
                             let itemWidth: CGFloat = geometry.size.width * 0.45
                             let itemHeight: CGFloat = 60
                             let offsetAngle = sin(75.0 * Double.pi / 180)
                             packButton(geometry: geometry)
-                            //                                .offset(x: -30)
-                                .onTapGesture {
-                                    
-                                }
                             
                             ZStack {
                                 SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
                                     VStack(spacing: 0) { 
-                                        ForEach(0..<10) { i in 
-                                            Text("\(intro.title) \(i)")
+                                        ForEach(intro.indices) { idx in 
+                                            Text(intro[idx].title)
                                                 .foregroundColor(.white)
                                                 .font(.system(size: 24))
                                                 .bold()
@@ -63,7 +59,7 @@ struct SelectionView: View {
                                             .frame(width: 8)
                                     }
                                     VStack(spacing: 5) {
-                                        Text(selectItem.subtitle)
+                                        Text(selectItem.title)
                                             .foregroundColor(.white)
                                             .font(.system(size: 24))
                                             .bold()
@@ -79,7 +75,7 @@ struct SelectionView: View {
                                 .offset(x: -10, y: 1.6)
                                 .onChange(of: offset) { _ in 
                                     let num = Int(offset / itemHeight)
-                                    self.selectItem = Definetion()
+                                    self.selectItem = intro[num]
                                 }
                                 .onChange(of: selectItem.title) { _ in 
                                     
@@ -90,9 +86,6 @@ struct SelectionView: View {
                         .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
                         
                         packButton(geometry: geometry)
-                            .onTapGesture {
-                                
-                            }
                     }
                     
                     VStack(alignment: .leading) {
@@ -112,9 +105,18 @@ struct SelectionView: View {
                                 }
                             }
                         }
-                        Rectangle()
-                            .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
-                            .shadow(radius: 20)
+                        ZStack {
+                            Rectangle()
+                            VStack {
+                                ForEach(selectItem.abstract.indices) { idx in 
+                                    Text(selectItem.abstract[idx])
+                                        .foregroundColor(.black)
+                                        .padding()
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
+                        .shadow(radius: 20)
                         Spacer()
                     }
                     .frame(width: geometry.size.width * 0.54)
