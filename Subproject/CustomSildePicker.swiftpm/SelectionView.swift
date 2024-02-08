@@ -3,7 +3,8 @@ import SwiftUI
 struct SelectionView: View {
     
     @State var offset: CGFloat = 0
-    @State var selectTitle: String = ""
+    @State var selectItem: IntroItem = Definetion()
+    let intro: IntroItem = Definetion()
     
     var body: some View {
         GeometryReader { geometry in 
@@ -33,7 +34,7 @@ struct SelectionView: View {
                                 SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
                                     VStack(spacing: 0) { 
                                         ForEach(0..<10) { i in 
-                                            Text("demo \(i)")
+                                            Text("\(intro.title) \(i)")
                                                 .foregroundColor(.white)
                                                 .font(.system(size: 24))
                                                 .bold()
@@ -61,39 +62,28 @@ struct SelectionView: View {
                                             .foregroundColor(.white)
                                             .frame(width: 8)
                                     }
-                                    VStack {
-                                        HStack(spacing: 10) {
-                                            Image(systemName: "star")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .foregroundColor(.white)
-                                                .frame(width: 15)
-                                            Text(selectTitle)
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 24))
-                                                .bold()
-                                        }
-                                        .frame(width: itemWidth, alignment: .leading)
-                                        .offset(x: -20)
-                                        Text("Subtitle")
+                                    VStack(spacing: 5) {
+                                        Text(selectItem.subtitle)
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 24))
+                                            .bold()
+                                            .frame(width: itemWidth, alignment: .leading)
+                                        Text(selectItem.subtitle)
                                             .foregroundColor(.white)
                                             .font(.system(size: 14))
                                             .frame(width: itemWidth, alignment: .leading)
                                     }
-                                    .padding(.leading, 180)
+                                    .padding(.leading, 200)
                                 }
                                 .frame(width: itemWidth, height: itemHeight * 1.2)
                                 .offset(x: -10, y: 1.6)
                                 .onChange(of: offset) { _ in 
                                     let num = Int(offset / itemHeight)
-                                    self.selectTitle = "DEMO \(num)"
+                                    self.selectItem = Definetion()
                                 }
-                                .onChange(of: selectTitle) { _ in 
+                                .onChange(of: selectItem.title) { _ in 
                                     
                                 }
-                                .onTapGesture(count: 2, perform: {
-                                    
-                                })
                             }
                             .offset(x: -62, y: -60)
                         }
@@ -110,18 +100,17 @@ struct SelectionView: View {
                             Color.white
                                 .frame(width: 1, height: 50)
                             VStack(alignment: .leading, spacing: 10) {
-                                Text(selectTitle)
+                                Text(selectItem.title)
                                     .foregroundColor(.white)
                                     .font(.system(size: 24)
                                         .bold())
                                 HStack {
                                     Image(systemName: "music.note")
-                                    Text("Subtitle")
+                                    Text(selectItem.subtitle)
                                         .foregroundColor(.white)
                                         .font(.system(size: 20))
                                 }
                             }
-                            //                            Spacer()
                         }
                         Rectangle()
                             .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
