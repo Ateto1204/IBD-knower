@@ -3,7 +3,8 @@ import SwiftUI
 struct SelectionView: View {
     
     @State var offset: CGFloat = 0
-    @State var selectTitle: String = ""
+    @State var selectItem: IntroItem = Definetion()
+    let intro: [IntroItem] = [Definetion(), Symptom()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -19,21 +20,17 @@ struct SelectionView: View {
                         .frame(width: geometry.size.width * 0.1)
                     ZStack(alignment: .top) {
                         VStack(spacing: 0) {
-                            let pickerCount = 10
+                            let pickerCount = intro.count
                             let itemWidth: CGFloat = geometry.size.width * 0.45
                             let itemHeight: CGFloat = 60
                             let offsetAngle = sin(75.0 * Double.pi / 180)
                             packButton(geometry: geometry)
-                            //                                .offset(x: -30)
-                                .onTapGesture {
-                                    
-                                }
                             
                             ZStack {
                                 SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
                                     VStack(spacing: 0) { 
-                                        ForEach(0..<10) { i in 
-                                            Text("demo \(i)")
+                                        ForEach(intro.indices) { idx in 
+                                            Text(intro[idx].title)
                                                 .foregroundColor(.white)
                                                 .font(.system(size: 24))
                                                 .bold()
@@ -61,48 +58,34 @@ struct SelectionView: View {
                                             .foregroundColor(.white)
                                             .frame(width: 8)
                                     }
-                                    VStack {
-                                        HStack(spacing: 10) {
-                                            Image(systemName: "star")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .foregroundColor(.white)
-                                                .frame(width: 15)
-                                            Text(selectTitle)
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 24))
-                                                .bold()
-                                        }
-                                        .frame(width: itemWidth, alignment: .leading)
-                                        .offset(x: -20)
-                                        Text("Subtitle")
+                                    VStack(spacing: 5) {
+                                        Text(selectItem.title)
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 24))
+                                            .bold()
+                                            .frame(width: itemWidth, alignment: .leading)
+                                        Text(selectItem.subtitle)
                                             .foregroundColor(.white)
                                             .font(.system(size: 14))
                                             .frame(width: itemWidth, alignment: .leading)
                                     }
-                                    .padding(.leading, 180)
+                                    .padding(.leading, 200)
                                 }
                                 .frame(width: itemWidth, height: itemHeight * 1.2)
                                 .offset(x: -10, y: 1.6)
                                 .onChange(of: offset) { _ in 
                                     let num = Int(offset / itemHeight)
-                                    self.selectTitle = "DEMO \(num)"
+                                    self.selectItem = intro[num]
                                 }
-                                .onChange(of: selectTitle) { _ in 
+                                .onChange(of: selectItem.title) { _ in 
                                     
                                 }
-                                .onTapGesture(count: 2, perform: {
-                                    
-                                })
                             }
                             .offset(x: -62, y: -60)
                         }
                         .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
                         
                         packButton(geometry: geometry)
-                            .onTapGesture {
-                                
-                            }
                     }
                     
                     VStack(alignment: .leading) {
@@ -110,22 +93,30 @@ struct SelectionView: View {
                             Color.white
                                 .frame(width: 1, height: 50)
                             VStack(alignment: .leading, spacing: 10) {
-                                Text(selectTitle)
+                                Text(selectItem.title)
                                     .foregroundColor(.white)
                                     .font(.system(size: 24)
                                         .bold())
                                 HStack {
                                     Image(systemName: "music.note")
-                                    Text("Subtitle")
+                                    Text(selectItem.subtitle)
                                         .foregroundColor(.white)
                                         .font(.system(size: 20))
                                 }
                             }
-                            //                            Spacer()
                         }
-                        Rectangle()
-                            .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
-                            .shadow(radius: 20)
+                        ZStack {
+                            Rectangle()
+                            VStack {
+                                ForEach(selectItem.abstract.indices) { idx in 
+                                    Text(selectItem.abstract[idx])
+                                        .foregroundColor(.black)
+                                        .padding()
+                                }
+                            }
+                        }
+                        .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
+                        .shadow(radius: 20)
                         Spacer()
                     }
                     .frame(width: geometry.size.width * 0.54)
