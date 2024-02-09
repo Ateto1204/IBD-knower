@@ -1,5 +1,8 @@
 # Project log
 
+#### 2024.02.09
+- Search information of IBD
+
 #### 2024.02.08
 - Add introduction items to IBD knower
 
