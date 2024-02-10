@@ -4,7 +4,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definetion()
-    let intro: [IntroItem] = [Definetion(), Symptom()]
+    @State var intro: [IntroItem] = [Definetion(), Symptom()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -74,7 +74,12 @@ struct SelectionView: View {
                                 .frame(width: itemWidth, height: itemHeight * 1.2)
                                 .offset(x: -10, y: 1.6)
                                 .onChange(of: offset) { _ in 
-                                    let num = Int(offset / itemHeight)
+                                    var num = Int(offset / itemHeight)
+                                    if num < 0 {
+                                        num = 0
+                                    } else if num >= intro.count {
+                                        num = intro.count - 1
+                                    }
                                     self.selectItem = intro[num]
                                 }
                                 .onChange(of: selectItem.title) { _ in 
@@ -107,9 +112,10 @@ struct SelectionView: View {
                         }
                         ZStack {
                             Rectangle()
+                                .foregroundColor(.white)
                             VStack {
-                                ForEach(selectItem.abstract.indices) { idx in 
-                                    Text(selectItem.abstract[idx])
+                                ForEach(self.selectItem.abstract.indices) { idx in 
+                                    Text(selectItem.abstract[idx] + "\(selectItem.abstract.count)")
                                         .foregroundColor(.black)
                                         .padding()
                                 }
