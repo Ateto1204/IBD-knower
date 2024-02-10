@@ -5,7 +5,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definetion()
-    let intro: [IntroItem] = [Definetion(), Symptom(), Cause()]
+    let intro: [IntroItem] = [Definetion(), Symptom()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -76,13 +76,7 @@ struct SelectionView: View {
                                 .offset(x: -10, y: 1.6)
                                 .onChange(of: offset) { _ in 
                                     let num = Int(offset / itemHeight)
-                                    if num < 0 {
-                                        self.selectItem = intro[0]
-                                    } else if num >= intro.count {
-                                        self.selectItem = intro[intro.count - 1]
-                                    } else {
-                                        self.selectItem = intro[num]
-                                    }
+                                    self.selectItem = intro[num]
                                 }
                                 .onChange(of: selectItem.title) { _ in 
                                     
@@ -105,8 +99,7 @@ struct SelectionView: View {
                                     .font(.system(size: 24)
                                         .bold())
                                 HStack {
-                                    Image(systemName: "plus")
-                                        .foregroundColor(.white)
+                                    Image(systemName: "music.note")
                                     Text(selectItem.subtitle)
                                         .foregroundColor(.white)
                                         .font(.system(size: 20))
@@ -115,27 +108,12 @@ struct SelectionView: View {
                         }
                         ZStack {
                             Rectangle()
-                            HStack {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    ForEach(self.selectItem.abstract.indices) { idx in 
-                                        Text(" -  " + selectItem.abstract[idx])
-                                            .font(.system(size: 21))
-                                            .foregroundColor(.black)
-                                    }
-                                    if selectItem.abstract.count > 2 {
-                                        VStack {
-                                            ForEach(0..<3) { i in 
-                                                Text(".")
-                                                    .font(.system(size: 21))
-                                                    .foregroundColor(.black)
-                                                    .bold()
-                                            }
-                                            Text(".")
-                                        }
-                                    }
+                            VStack {
+                                ForEach(selectItem.abstract.indices) { idx in 
+                                    Text(selectItem.abstract[idx])
+                                        .foregroundColor(.black)
+                                        .padding()
                                 }
-                                .padding()
-                                Spacer()
                             }
                         }
                         .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)

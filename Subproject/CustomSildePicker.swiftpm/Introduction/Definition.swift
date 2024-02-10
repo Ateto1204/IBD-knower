@@ -6,7 +6,7 @@ class Definetion: IntroItem {
         super.init(title: "Definetion", 
                    subtitle: "What is IBD", 
                    abstract: ["Ulcerative colitis", 
-                             "Crohn\'s disease"], 
+                             "Crohn's disease"], 
                    detail: [])
     }
 }
