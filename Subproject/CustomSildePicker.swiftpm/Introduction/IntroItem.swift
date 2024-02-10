@@ -1,10 +1,10 @@
 import SwiftUI
 
-class IntroItem {
+class IntroItem: ObservableObject {
     
     let title: String
     let subtitle: String
-    var abstract: [String]
+    @Published var abstract: [String]
     var detail: [String]
     
     init(title: String, subtitle: String, abstract: [String], detail: [String]) {
