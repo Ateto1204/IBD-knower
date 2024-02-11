@@ -1,12 +1,12 @@
 import SwiftUI
 
-class Definetion: IntroItem {
+class Cause: IntroItem {
     
     init() {
-        super.init(title: "Definetion", 
-                   subtitle: "What is IBD", 
-                   abstract: ["Ulcerative colitis", 
-                              "Crohn\'s disease", 
+        super.init(title: "Cause", 
+                   subtitle: "Why you get IBD", 
+                   abstract: ["Immune system malfunction", 
+                              "Heredity", 
                               "", 
                               "", 
                               "", 
