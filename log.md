@@ -1,5 +1,8 @@
 # Project log
 
+#### 2024.02.11
+- Add introduction item of disease cause to IBD knower
+
 #### 2024.02.09
 - Search information of IBD
 
