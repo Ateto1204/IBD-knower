@@ -5,7 +5,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definetion()
-    let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk()]
+    let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk(), Complications()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -138,7 +138,7 @@ struct SelectionView: View {
             Diamond()
                 .foregroundColor(.black)
                 .frame(width: geometry.size.width * 0.36, height: geometry.size.height * 0.08)
-            Text("Introduction")
+            Text("INTRODUCTION")
                 .foregroundColor(.white)
                 .font(.system(size: 24))
                 .bold()
@@ -190,7 +190,7 @@ struct SelectionView: View {
             Diamond()
                 .foregroundColor(.white)
                 .frame(width: geometry.size.width * 0.12, height: geometry.size.height * 0.12)
-            Text("Detail")
+            Text("DETAIL")
                 .foregroundColor(.gray)
                 .font(.system(size: 24))
                 .bold()
