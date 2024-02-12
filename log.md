@@ -1,24 +1,27 @@
 # Project log
 
 #### 2024.02.11
-- Add introduction item of disease cause to IBD knower
+- Add introduction item of diease risk factor to IBD Knower
+
+#### 2024.02.11
+- Add introduction item of disease cause to IBD Knower
 
 #### 2024.02.09
 - Search information of IBD
 
 #### 2024.02.08
-- Add introduction items to IBD knower
+- Add introduction items to IBD Knower
 
 #### 2024.02.07
-- Enhance stability of slided picker
+- Enhance stability of slided picker for IBD Knower
 
 #### 2024.02.06
-- Add back button to selection view
-- Add slided picker to IBD knower
+- Add back button to selection view for IBD Knower
+- Add slided picker to IBD Knower
 
 #### 2024.02.04
 - Complete CustomSlidePicker
-- Create IBD knower
+- Create IBD Knower
 
 #### 2024.01.31
 - Create subproject CustomSlidePicker
