@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Ateto
+ */
+
 import SwiftUI
 
 @main
