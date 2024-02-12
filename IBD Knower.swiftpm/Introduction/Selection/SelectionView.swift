@@ -5,7 +5,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definetion()
-    let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk(), Complications()]
+    let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk(), Complications(), Treatment()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -175,11 +175,11 @@ struct SelectionView: View {
                 .foregroundColor(.black)
                 .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
                 .offset(x: -10)
-            Image(systemName: "arrow.backward")
+            Image(systemName: "arrowshape.left")
                 .resizable()
                 .foregroundColor(.white)
-                .frame(width: geometry.size.width * 0.02, height: geometry.size.height * 0.02)
-                .offset(x: -geometry.size.width * 0.02)
+                .frame(width: geometry.size.width * 0.023, height: geometry.size.height * 0.025)
+                .offset(x: -geometry.size.width * 0.018)
         }
         .shadow(radius: 20)
         .offset(x: -geometry.size.width * 0.02, y: 20)
@@ -189,11 +189,12 @@ struct SelectionView: View {
         ZStack {
             Diamond()
                 .foregroundColor(.white)
-                .frame(width: geometry.size.width * 0.12, height: geometry.size.height * 0.12)
+                .frame(width: geometry.size.width * 0.13, height: geometry.size.height * 0.12)
             Text("DETAIL")
                 .foregroundColor(.gray)
                 .font(.system(size: 24))
                 .bold()
+                .offset(x: 8)
         }
         .shadow(radius: 20)
         .offset(y: -20)
