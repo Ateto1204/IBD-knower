@@ -17,20 +17,30 @@ class IntroItem {
     func abstractView() -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                ForEach(self.abstract.indices) { idx in 
-                    if idx < self.abstract.count {
+                ForEach(0..<5) { idx in 
+                    if idx < self.abstract.count && !self.abstract[idx].isEmpty {
                         HStack {
-                            if !self.abstract[idx].isEmpty {
-                                Text("- ")
-                                    .foregroundColor(.black)
-                                    .bold()
-                            }
+                            Text("- ")
+                                .foregroundColor(.black)
+                                .bold()
                             Text(self.abstract[idx])
                                 .foregroundColor(.black)
                                 .lineLimit(1)
                         }
                     }
                 }
+                HStack {
+                    Group {
+                        Image(systemName: "plus")
+                        Text("Press")
+                        Text("'DETAIL'")
+                            .font(.system(size: 18))
+                            .bold()
+                        Text("to see more")
+                    }
+                    .foregroundColor(.gray)
+                }
+                .padding(.top, 11)
             }
             Spacer()
         }
