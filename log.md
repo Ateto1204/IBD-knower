@@ -1,7 +1,8 @@
 # Project log
 
 #### 2024.02.11
-- Add introduction item of diease risk factor to IBD Knower
+- Add introduction item of disease risk factor to IBD Knower
+- Add introduction item of disease complications to IBD Knower
 
 #### 2024.02.11
 - Add introduction item of disease cause to IBD Knower
