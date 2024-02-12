@@ -107,7 +107,7 @@ struct SelectionView: View {
                                     .font(.system(size: 24)
                                         .bold())
                                 HStack {
-                                    Image(systemName: "plus")
+                                    Image(systemName: "doc.fill.badge.plus")
                                         .foregroundColor(.white)
                                     Text(selectItem.subtitle)
                                         .foregroundColor(.white)

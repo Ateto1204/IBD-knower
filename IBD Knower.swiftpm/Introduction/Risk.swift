@@ -4,7 +4,7 @@ class Risk: IntroItem {
     
     init() {
         super.init(title: "Risk", 
-                   subtitle: "Risk groups and factors for IBD", 
+                   subtitle: "Risk factors for IBD", 
                    abstract: ["Age", 
                               "Race or ethnicity", 
                               "Family history", 
