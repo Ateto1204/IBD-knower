@@ -5,7 +5,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definetion()
-    let intro: [IntroItem] = [Definetion(), Symptom(), Cause()]
+    let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk()]
     
     var body: some View {
         GeometryReader { geometry in 
@@ -96,6 +96,8 @@ struct SelectionView: View {
                     }
                     
                     VStack(alignment: .leading) {
+                        Spacer()
+                            .frame(height: geometry.size.height * 0.1)
                         HStack(spacing: 18) {
                             Color.white
                                 .frame(width: 1, height: 50)
@@ -116,6 +118,7 @@ struct SelectionView: View {
                         ZStack {
                             Rectangle()
                             selectItem.abstractView()
+                                .frame(width: geometry.size.width * 0.26, height: geometry.size.width * 0.26)
                         }
                         .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
                         .shadow(radius: 20)

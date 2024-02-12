@@ -4,7 +4,7 @@ class IntroItem {
     
     let title: String
     let subtitle: String
-    var abstract: [String]
+    let abstract: [String]
     let detail: [String]
     
     init(title: String, subtitle: String, abstract: [String], detail: [String]) {
@@ -17,12 +17,21 @@ class IntroItem {
     func abstractView() -> some View {
         HStack {
             VStack(alignment: .leading, spacing: 5) {
-                ForEach(abstract.indices) { idx in 
-                    Text(self.abstract[idx])
-                        .foregroundColor(.black)
+                ForEach(self.abstract.indices) { idx in 
+                    if idx < self.abstract.count {
+                        HStack {
+                            if !self.abstract[idx].isEmpty {
+                                Text("- ")
+                                    .foregroundColor(.black)
+                                    .bold()
+                            }
+                            Text(self.abstract[idx])
+                                .foregroundColor(.black)
+                                .lineLimit(1)
+                        }
+                    }
                 }
             }
-            .padding(.leading, 27)
             Spacer()
         }
     }
