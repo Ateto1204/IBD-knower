@@ -12,13 +12,20 @@ struct HomeView: View {
                     Button {
                         selectStatus.setStatus(newStatus: .INTRO)
                     } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: geometry.size.height * 0.28, height: geometry.size.height * 0.28)
-                                .cornerRadius(15)
-                            Text("Introduction")
+                        VStack(spacing: 16) {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: geometry.size.height * 0.28, height: geometry.size.height * 0.28)
+                                    .cornerRadius(15)
+                                Image(systemName: "books.vertical")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: geometry.size.height * 0.14)
+                                    .foregroundColor(.white)
+                            }
+                            Text("INTRODUCTION")
                                 .foregroundColor(.white)
-                                .font(.system(size: 28))
+                                .font(.system(size: 24))
                                 .bold()
                         }
                     }
@@ -28,13 +35,20 @@ struct HomeView: View {
                     Button {
                         
                     } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: geometry.size.height * 0.28, height: geometry.size.height * 0.28)
-                                .cornerRadius(15)
-                            Text("Warm up")
+                        VStack(spacing: 16) {
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: geometry.size.height * 0.28, height: geometry.size.height * 0.28)
+                                    .cornerRadius(15)
+                                Image(systemName: "figure.cooldown")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: geometry.size.width * 0.08)
+                                    .foregroundColor(.white)
+                            }
+                            Text("WARM UP")
                                 .foregroundColor(.white)
-                                .font(.system(size: 28))
+                                .font(.system(size: 24))
                                 .bold()
                         }
                     }
