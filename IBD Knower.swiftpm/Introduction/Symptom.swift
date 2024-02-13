@@ -11,7 +11,12 @@ class Symptom: IntroItem {
                               "Abdominal cramping", 
                               "Blood in your stool", 
                               "Reduced appetite", 
-                              "Unintended weight loss"], 
+                              "Unintended weight loss", 
+                              "", 
+                              "", 
+                              "", 
+                              "", 
+                              "" ], 
                    detail: [])
     }
 }
