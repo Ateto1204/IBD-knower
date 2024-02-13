@@ -11,7 +11,12 @@ class Risk: IntroItem {
                               "Cigarette smoking", 
                               "Nonsteroidal anti-inflammatory medications", 
                               "", 
-                              ""], 
+                              "", 
+                              "", 
+                              "", 
+                              "", 
+                              "", 
+                              "" ], 
                    detail: [])
     }
 }
