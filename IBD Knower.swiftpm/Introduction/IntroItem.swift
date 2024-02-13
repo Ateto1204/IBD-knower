@@ -48,21 +48,31 @@ class IntroItem {
     
     func detailView() -> some View {
         GeometryReader { geometry in 
-            ZStack {
-                Color.white
-                
-                ScrollView(showsIndicators: false) {
-                    ForEach(self.abstract.indices) { idx in 
-                        Group {
-                            Text(self.abstract[idx])
-                                .font(.title)
-                            if idx < self.detail.count && !self.detail[idx].isEmpty {
-                                Text(self.detail[idx])
+            VStack {
+                Spacer()
+                    .frame(height: geometry.size.height * 0.12)
+                HStack {
+                    Spacer()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 25)
+                            .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.8)
+                            .foregroundColor(.white)
+                        ScrollView(showsIndicators: false) {
+                            ForEach(self.abstract.indices) { idx in 
+                                Group {
+                                    Text(self.abstract[idx])
+                                        .font(.title)
+                                    if idx < self.detail.count && !self.detail[idx].isEmpty {
+                                        Text(self.detail[idx])
+                                    }
+                                }
+                                .foregroundColor(.black)
+                                .padding()
                             }
                         }
-                        .foregroundColor(.black)
-                        .padding()
+                        .frame(width: geometry.size.width * 0.75, height: geometry.size.height * 0.75)
                     }
+                    Spacer()
                 }
             }
         }

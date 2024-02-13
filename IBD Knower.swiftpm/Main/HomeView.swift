@@ -7,6 +7,13 @@ struct HomeView: View {
         GeometryReader { geometry in 
             VStack {
                 Spacer()
+                    .frame(height: geometry.size.height * 0.21)
+                Text("IBD KNOWER")
+                    .foregroundColor(.white)
+                    .font(.system(size: 41))
+                    .bold()
+                Spacer()
+                    .frame(height: geometry.size.height * 0.13)
                 HStack {
                     Spacer()
                     Button {

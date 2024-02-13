@@ -8,132 +8,160 @@ struct SelectionView: View {
     let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk(), Complications(), Treatment()]
     
     var body: some View {
-        GeometryReader { geometry in 
-            ZStack {
-                Color(.gray)
-                    .blur(radius: 0.3)
-                
-                interactView(geometry: geometry)
-                    .frame(width: geometry.size.width, height: geometry.size.height)
-                
-                HStack(spacing: 0) {
-                    Spacer()
-                        .frame(width: geometry.size.width * 0.1)
-                    ZStack(alignment: .top) {
-                        VStack(spacing: 0) {
-                            let pickerCount = intro.count
-                            let itemWidth: CGFloat = geometry.size.width * 0.45
-                            let itemHeight: CGFloat = 60
-                            let offsetAngle = sin(75.0 * Double.pi / 180)
-                            packButton(geometry: geometry)
-                            
-                            ZStack {
-                                SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
-                                    VStack(spacing: 0) { 
-                                        ForEach(intro.indices) { idx in 
-                                            Text(intro[idx].title)
+        GeometryReader { geometry in
+            if selectStatus.status == .INTRO {
+                ZStack {
+                    Color(.gray)
+                        .blur(radius: 0.3)
+                    
+                    interactView(geometry: geometry)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                    
+                    HStack(spacing: 0) {
+                        Spacer()
+                            .frame(width: geometry.size.width * 0.1)
+                        ZStack(alignment: .top) {
+                            VStack(spacing: 0) {
+                                let pickerCount = intro.count
+                                let itemWidth: CGFloat = geometry.size.width * 0.45
+                                let itemHeight: CGFloat = 60
+                                let offsetAngle = sin(75.0 * Double.pi / 180)
+                                packButton(geometry: geometry)
+                                
+                                ZStack {
+                                    SlidedPicker(pickerCount: pickerCount, itemWidth: itemWidth * offsetAngle * 0.8, itemHeight: itemHeight, offset: $offset, content: {
+                                        VStack(spacing: 0) { 
+                                            ForEach(intro.indices) { idx in 
+                                                Text(intro[idx].title)
+                                                    .foregroundColor(.white)
+                                                    .font(.system(size: 24))
+                                                    .bold()
+                                                    .padding(.leading, 30)
+                                                    .frame(width: itemWidth * offsetAngle * 0.8, height: itemHeight, alignment: .leading)
+                                                    .rotationEffect(.degrees(-15))
+                                            }
+                                        }
+                                    })
+                                    .background(
+                                        Rectangle()
+                                            .foregroundColor(.black)
+                                            .opacity(0.1)
+                                            .frame(height: geometry.size.height * 1.4)
+                                    )
+                                    .frame(width: itemWidth * offsetAngle * 0.8)
+                                    .rotationEffect(.degrees(15))
+                                    .onAppear {
+                                        update(itemHeight: itemHeight)
+                                    }
+                                    
+                                    ZStack {
+                                        ZStack(alignment: .center) { 
+                                            RoundedRectangle(cornerRadius: 80)
+                                                .foregroundColor(.white)
+                                                .frame(width: geometry.size.width * 0.338, height: geometry.size.height * 0.09)
+                                            RoundedRectangle(cornerRadius: 80)
+                                                .foregroundColor(.black)
+                                                .frame(width: geometry.size.width * 0.33, height: geometry.size.height * 0.0785)
+                                            
+                                        }
+                                        VStack(spacing: 5) {
+                                            Text(selectItem.title)
                                                 .foregroundColor(.white)
                                                 .font(.system(size: 24))
                                                 .bold()
-                                                .padding(.leading, 30)
-                                                .frame(width: itemWidth * offsetAngle * 0.8, height: itemHeight, alignment: .leading)
-                                                .rotationEffect(.degrees(-15))
+                                                .frame(width: itemWidth, alignment: .leading)
+                                            Text(selectItem.subtitle)
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 14))
+                                                .frame(width: itemWidth, alignment: .leading)
                                         }
+                                        .padding(.leading, 200)
                                     }
-                                })
-                                .background(
-                                    Rectangle()
-                                        .foregroundColor(.black)
-                                        .opacity(0.1)
-                                        .frame(height: geometry.size.height * 1.4)
-                                )
-                                .frame(width: itemWidth * offsetAngle * 0.8)
-                                .rotationEffect(.degrees(15))
-                                
-                                ZStack {
-                                    ZStack(alignment: .center) { 
-                                        RoundedRectangle(cornerRadius: 80)
-                                            .foregroundColor(.white)
-                                            .frame(width: geometry.size.width * 0.338, height: geometry.size.height * 0.084)
-                                        RoundedRectangle(cornerRadius: 80)
-                                            .foregroundColor(.black)
-                                            .frame(width: geometry.size.width * 0.33, height: geometry.size.height * 0.076)
+                                    .frame(width: itemWidth, height: itemHeight * 1.2)
+                                    .offset(x: -4, y: 9)
+                                    .onChange(of: offset) { _ in 
+                                        update(itemHeight: itemHeight)
+                                    }
+                                    .onChange(of: selectItem.title) { _ in 
                                         
                                     }
-                                    VStack(spacing: 5) {
-                                        Text(selectItem.title)
+                                }
+                                .offset(x: -27, y: -60)
+                            }
+                            .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
+                            
+                            packButton(geometry: geometry)
+                        }
+                        
+                        VStack(alignment: .leading) {
+                            Spacer()
+                                .frame(height: geometry.size.height * 0.19)
+                            HStack(spacing: 18) {
+                                RoundedRectangle(cornerRadius: 100)
+                                    .foregroundColor(.white)
+                                    .frame(width: 3.7, height: 75)
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text(selectItem.title)
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 30))
+                                        .bold()
+                                    HStack {
+                                        Image(systemName: "doc.fill.badge.plus")
                                             .foregroundColor(.white)
-                                            .font(.system(size: 24))
-                                            .bold()
-                                            .frame(width: itemWidth, alignment: .leading)
                                         Text(selectItem.subtitle)
                                             .foregroundColor(.white)
-                                            .font(.system(size: 14))
-                                            .frame(width: itemWidth, alignment: .leading)
+                                            .font(.system(size: 20))
                                     }
-                                    .padding(.leading, 200)
-                                }
-                                .frame(width: itemWidth, height: itemHeight * 1.2)
-                                .offset(x: -10, y: 1.6)
-                                .onChange(of: offset) { _ in 
-                                    let num = Int(offset / itemHeight)
-                                    if num < 0 {
-                                        self.selectItem = intro[0]
-                                    } else if num >= intro.count {
-                                        self.selectItem = intro[intro.count - 1]
-                                    } else {
-                                        self.selectItem = intro[num]
-                                    }
-                                }
-                                .onChange(of: selectItem.title) { _ in 
-                                    
                                 }
                             }
-                            .offset(x: -62, y: -60)
-                        }
-                        .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
-                        
-                        packButton(geometry: geometry)
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Spacer()
-                            .frame(height: geometry.size.height * 0.19)
-                        HStack(spacing: 18) {
-                            RoundedRectangle(cornerRadius: 100)
+                            Spacer()
                                 .foregroundColor(.white)
-                                .frame(width: 3.7, height: 75)
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text(selectItem.title)
-                                    .foregroundColor(.white)
-                                    .font(.system(size: 24)
-                                        .bold())
-                                HStack {
-                                    Image(systemName: "doc.fill.badge.plus")
-                                        .foregroundColor(.white)
-                                    Text(selectItem.subtitle)
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20))
-                                }
+                                .frame(height: geometry.size.height * 0.044)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 25.0)
+                                selectItem.abstractView()
+                                    .frame(width: geometry.size.width * 0.26, height: geometry.size.width * 0.26)
                             }
+                            .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
+                            .shadow(radius: 20)
+                            Spacer()
                         }
-                        Spacer()
-                            .foregroundColor(.white)
-                            .frame(height: geometry.size.height * 0.044)
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 25.0)
-                            selectItem.abstractView()
-                                .frame(width: geometry.size.width * 0.26, height: geometry.size.width * 0.26)
+                        .frame(width: geometry.size.width * 0.54)
+                    }
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                }
+                .transition(.asymmetric(insertion: .opacity, removal: .opacity))
+            } else if selectStatus.status == .DETAIL {
+                ZStack {
+                    Color.gray
+                        .blur(radius: 0.3)
+                    
+                    selectItem.detailView()
+                    
+                    VStack {
+                        HStack {
+                            backButton(geometry: geometry)
+                                .onTapGesture {
+                                    selectStatus.setStatus(newStatus: .INTRO)
+                                }
+                            Spacer()
                         }
-                        .frame(width: geometry.size.width * 0.3, height: geometry.size.width * 0.3)
-                        .shadow(radius: 20)
                         Spacer()
                     }
-                    .frame(width: geometry.size.width * 0.54)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height)
             }
-            .transition(.asymmetric(insertion: .opacity, removal: .opacity))
+        }
+    }
+    
+    func update(itemHeight: CGFloat) {
+        let num = Int(offset / itemHeight)
+        if num < 0 {
+            self.selectItem = intro[0]
+        } else if num >= intro.count {
+            self.selectItem = intro[intro.count - 1]
+        } else {
+            self.selectItem = intro[num]
         }
     }
     
@@ -148,6 +176,7 @@ struct SelectionView: View {
                 .bold()
         }
         .shadow(radius: 20)
+        .offset(x: 47)
     }
     
     func interactView(geometry: GeometryProxy) -> some View {
@@ -164,7 +193,7 @@ struct SelectionView: View {
                 Spacer()
                 detailButton(geometry: geometry)
                     .onTapGesture {
-                        
+                        selectStatus.setStatus(newStatus: .DETAIL)
                     }
             }
         }
