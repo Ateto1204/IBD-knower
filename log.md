@@ -1,8 +1,9 @@
 # Project log
 
-#### 2024/02.13
+#### 2024.02.13
 - Beauty APP interface
 - Add detail view of introduction to IBD Knower
+- Add IBD information to IBD Knower
 
 #### 2024.02.12
 - Add introduction item of disease risk factor to IBD Knower
