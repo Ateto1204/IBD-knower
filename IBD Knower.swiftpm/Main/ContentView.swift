@@ -8,7 +8,7 @@ struct ContentView: View {
             switch selectStatus.status {
             case .HOME:
                 HomeView()
-            case .INTRO:
+            case .INTRO, .DETAIL:
                 SelectionView()
             }
         }

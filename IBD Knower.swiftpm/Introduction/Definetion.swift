@@ -16,6 +16,6 @@ class Definetion: IntroItem {
                               "", 
                               "", 
                               "" ], 
-                   detail: [])
+                   detail: ["Inflammatory bowel disease (IBD) is a term that describes disorders involving long-standing(chronic) inflammation of tissues in your digestive tract."])
     }
 }
