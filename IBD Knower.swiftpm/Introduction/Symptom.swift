@@ -17,6 +17,6 @@ class Symptom: IntroItem {
                               "", 
                               "", 
                               "" ], 
-                   detail: [])
+                   detail: ["Depending on the severity of inflammation and where it occurs and you are likely to have periods of active illness followed by peroids of remission."])
     }
 }

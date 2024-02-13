@@ -8,6 +8,8 @@ struct HomeView: View {
             VStack {
                 Spacer()
                     .frame(height: geometry.size.height * 0.21)
+                // Image(systemName: "hand.draw.fill")
+                Image(systemName: "house.fill")
                 Text("IBD KNOWER")
                     .foregroundColor(.white)
                     .font(.system(size: 41))

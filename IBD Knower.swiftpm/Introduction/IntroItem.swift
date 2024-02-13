@@ -57,17 +57,47 @@ class IntroItem {
                         RoundedRectangle(cornerRadius: 25)
                             .frame(width: geometry.size.width * 0.8, height: geometry.size.height * 0.8)
                             .foregroundColor(.white)
-                        ScrollView(showsIndicators: false) {
-                            ForEach(self.abstract.indices) { idx in 
-                                Group {
-                                    Text(self.abstract[idx])
-                                        .font(.title)
-                                    if idx < self.detail.count && !self.detail[idx].isEmpty {
-                                        Text(self.detail[idx])
+                        VStack {
+                            
+                            Text(self.subtitle)
+                                .font(.system(size: 34))
+                                .foregroundColor(.black)
+                                .bold()
+                                .padding()
+                            RoundedRectangle(cornerRadius: 100)
+                                .frame(width: geometry.size.width * 0.72, height: 2.3)
+                                .foregroundColor(.gray)
+                            
+                            ScrollView(showsIndicators: false) {
+                                let hasOverview: Bool = !self.detail.isEmpty && !self.detail[0].isEmpty
+                                if hasOverview {
+                                    HStack {
+                                        Text(self.detail[0])
+                                            .foregroundColor(.black)
+                                            .padding()
+                                        Spacer()
                                     }
                                 }
-                                .foregroundColor(.black)
-                                .padding()
+                                
+                                ForEach(self.abstract.indices) { idx in 
+                                    HStack {
+//                                        Spacer()
+                                        VStack(alignment: .leading) {
+                                            Group {
+                                                if !self.abstract[idx].isEmpty {
+                                                    Text(self.abstract[idx])
+                                                        .font(.title)
+                                                    if idx + 1 < self.detail.count && !self.detail[idx + 1].isEmpty {
+                                                        Text(self.detail[idx + 1])
+                                                    }
+                                                }
+                                            }
+                                            .foregroundColor(.black)
+                                            .padding()
+                                        }
+                                        Spacer()
+                                    }
+                                }
                             }
                         }
                         .frame(width: geometry.size.width * 0.75, height: geometry.size.height * 0.75)
