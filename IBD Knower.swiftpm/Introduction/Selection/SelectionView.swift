@@ -51,13 +51,14 @@ struct SelectionView: View {
                                 .rotationEffect(.degrees(15))
                                 
                                 ZStack {
-                                    ZStack(alignment: .trailing) {
-                                        Diamond()
-                                            .foregroundColor(.black)
-                                            .frame(width: itemWidth * 0.8)
-                                        Diamond()
+                                    ZStack(alignment: .center) { 
+                                        RoundedRectangle(cornerRadius: 80)
                                             .foregroundColor(.white)
-                                            .frame(width: 8)
+                                            .frame(width: geometry.size.width * 0.338, height: geometry.size.height * 0.084)
+                                        RoundedRectangle(cornerRadius: 80)
+                                            .foregroundColor(.black)
+                                            .frame(width: geometry.size.width * 0.33, height: geometry.size.height * 0.076)
+                                        
                                     }
                                     VStack(spacing: 5) {
                                         Text(selectItem.title)
@@ -97,10 +98,11 @@ struct SelectionView: View {
                     
                     VStack(alignment: .leading) {
                         Spacer()
-                            .frame(height: geometry.size.height * 0.1)
+                            .frame(height: geometry.size.height * 0.19)
                         HStack(spacing: 18) {
-                            Color.white
-                                .frame(width: 1, height: 50)
+                            RoundedRectangle(cornerRadius: 100)
+                                .foregroundColor(.white)
+                                .frame(width: 3.7, height: 75)
                             VStack(alignment: .leading, spacing: 10) {
                                 Text(selectItem.title)
                                     .foregroundColor(.white)
@@ -115,8 +117,11 @@ struct SelectionView: View {
                                 }
                             }
                         }
+                        Spacer()
+                            .foregroundColor(.white)
+                            .frame(height: geometry.size.height * 0.044)
                         ZStack {
-                            Rectangle()
+                            RoundedRectangle(cornerRadius: 25.0)
                             selectItem.abstractView()
                                 .frame(width: geometry.size.width * 0.26, height: geometry.size.width * 0.26)
                         }
@@ -125,7 +130,6 @@ struct SelectionView: View {
                         Spacer()
                     }
                     .frame(width: geometry.size.width * 0.54)
-                    .padding(.top, 100)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)
             }

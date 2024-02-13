@@ -11,7 +11,11 @@ class Definetion: IntroItem {
                               "", 
                               "", 
                               "", 
-                              ""], 
+                              "", 
+                              "", 
+                              "", 
+                              "", 
+                              "" ], 
                    detail: [])
     }
 }
