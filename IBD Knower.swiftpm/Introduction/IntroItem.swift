@@ -45,4 +45,26 @@ class IntroItem {
             Spacer()
         }
     }
+    
+    func detailView() -> some View {
+        GeometryReader { geometry in 
+            ZStack {
+                Color.white
+                
+                ScrollView(showsIndicators: false) {
+                    ForEach(self.abstract.indices) { idx in 
+                        Group {
+                            Text(self.abstract[idx])
+                                .font(.title)
+                            if idx < self.detail.count && !self.detail[idx].isEmpty {
+                                Text(self.detail[idx])
+                            }
+                        }
+                        .foregroundColor(.black)
+                        .padding()
+                    }
+                }
+            }
+        }
+    }
 }
