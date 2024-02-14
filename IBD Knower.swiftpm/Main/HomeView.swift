@@ -38,6 +38,8 @@ struct HomeView: View {
                                 .bold()
                         }
                     }
+                    .buttonStyle(PushDownButtonStyle())
+                    
                     Spacer()
                         .frame(width: geometry.size.width * 0.1)
                     
