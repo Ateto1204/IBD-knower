@@ -10,5 +10,17 @@ WWDC24 Swift Student Challenge (Developing)
 ### Introduction Screen
 
 <div style="text-align:center;">
-  <img src="introduction screen.jpg" alt="Image" style="width:600px;">
+  <img src="demo1.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo2.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo3.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo4.jpg" alt="Image" style="width:600px;">
 </div>
