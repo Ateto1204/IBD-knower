@@ -5,8 +5,8 @@ struct SelectionView: View {
     @EnvironmentObject var selectStatus: SelectStatus
     
     @State var offset: CGFloat = 0
-    @State var selectItem: IntroItem = Definetion()
-    let intro: [IntroItem] = [Definetion(), Symptom(), Cause(), Risk(), Complications(), Treatment()]
+    @State var selectItem: IntroItem = Definition()
+    let intro: [IntroItem] = [Definition(), Symptom(), Cause(), Risk(), Complications(), Treatment()]
     
     var body: some View {
         GeometryReader { geometry in
