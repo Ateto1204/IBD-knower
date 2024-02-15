@@ -1,4 +1,5 @@
 import SwiftUI
+import Pow
 
 struct SelectionView: View {
     @EnvironmentObject var selectStatus: SelectStatus
@@ -195,6 +196,13 @@ struct SelectionView: View {
                     .onTapGesture {
                         selectStatus.setStatus(newStatus: .DETAIL)
                     }
+                    .conditionalEffect(
+                        .repeat(
+                            .glow(color: .yellow, radius: 65), 
+                            every: 1.5
+                        ), 
+                        condition: true
+                    )
             }
         }
     }

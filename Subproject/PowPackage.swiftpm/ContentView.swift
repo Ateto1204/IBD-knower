@@ -7,7 +7,7 @@ struct ContentView: View {
     var body: some View {
         switch selectStatus.status {
         case .HOME:
-            PushDown()
+            HomeView()
         case .DEMO:
             demoView()
         }
