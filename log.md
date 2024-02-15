@@ -1,5 +1,11 @@
 # Project log
 
+#### 2024.02.15
+- Change APP theme color
+- Beauty APP interface
+- Complete treatment detail info
+- Add glow button effect to IBD Knower
+
 #### 2024.02.14
 - Import Pow Package
 - Add push down button effect to IBD Knower
