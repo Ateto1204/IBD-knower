@@ -9,8 +9,8 @@ class SelectStatus: ObservableObject {
     @Published var status: APPStatus = .HOME
     
     func setStatus(newStatus: APPStatus) {
-        withAnimation {
+//        withAnimation {
             self.status = newStatus
-        }
+//        }
     }
 }
