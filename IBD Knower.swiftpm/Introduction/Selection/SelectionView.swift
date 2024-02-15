@@ -15,9 +15,6 @@ struct SelectionView: View {
                     Color(selectStatus.bgColor)
                         .blur(radius: 4)
                     
-                    interactView(geometry: geometry)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                    
                     HStack(spacing: 0) {
                         Spacer()
                             .frame(width: geometry.size.width * 0.1)
@@ -91,7 +88,7 @@ struct SelectionView: View {
                             }
                             .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
                             
-                            packButton(geometry: geometry)
+//                            packButton(geometry: geometry)
                         }
                         
                         VStack(alignment: .leading) {
@@ -120,6 +117,7 @@ struct SelectionView: View {
                                 .frame(height: geometry.size.height * 0.044)
                             ZStack {
                                 RoundedRectangle(cornerRadius: 25.0)
+                                    .foregroundColor(.white)
                                 selectItem.abstractView()
                                     .frame(width: geometry.size.width * 0.26, height: geometry.size.width * 0.26)
                             }
@@ -130,14 +128,19 @@ struct SelectionView: View {
                         .frame(width: geometry.size.width * 0.54)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
+                    
+                    interactView(geometry: geometry)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                    
                 }
                 .transition(.asymmetric(insertion: .opacity, removal: .opacity))
             } else if selectStatus.status == .DETAIL {
                 ZStack {
-                    Color.gray
+                    Color(selectStatus.bgColor)
                         .blur(radius: 0.3)
                     
                     selectItem.detailView()
+                        .shadow(radius: 12)
                     
                     VStack {
                         HStack {
@@ -191,6 +194,7 @@ struct SelectionView: View {
             }
             Spacer()
             HStack {
+                borderPattern(geometry: geometry)
                 Spacer()
                 detailButton(geometry: geometry)
                     .onTapGesture {
@@ -198,8 +202,8 @@ struct SelectionView: View {
                     }
                     .conditionalEffect(
                         .repeat(
-                            .glow(color: .yellow, radius: 65), 
-                            every: 1.5
+                            .glow(color: .white, radius: 85), 
+                            every: 1.75
                         ), 
                         condition: true
                     )
@@ -229,15 +233,27 @@ struct SelectionView: View {
     func detailButton(geometry: GeometryProxy) -> some View {
         ZStack {
             Diamond()
-                .foregroundColor(.white)
+                .foregroundColor(selectStatus.themeColor)
                 .frame(width: geometry.size.width * 0.13, height: geometry.size.height * 0.12)
             Text("DETAIL")
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
                 .font(.system(size: 24))
                 .bold()
                 .offset(x: 8)
         }
         .shadow(radius: 20)
         .offset(y: -20)
+    }
+    
+    func borderPattern(geometry: GeometryProxy) -> some View {
+        ZStack(alignment: .leading) {
+            Triangle()
+                .foregroundColor(.white)
+                .frame(width: geometry.size.width * 0.415, height: geometry.size.height * 0.21)
+            Triangle()
+                .foregroundColor(.black)
+                .frame(width: geometry.size.width * 0.415, height: geometry.size.height * 0.21)
+                .offset(x: -25)
+        }
     }
 }
