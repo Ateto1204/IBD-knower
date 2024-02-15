@@ -12,8 +12,8 @@ struct SelectionView: View {
         GeometryReader { geometry in
             if selectStatus.status == .INTRO {
                 ZStack {
-                    Color(.gray)
-                        .blur(radius: 0.3)
+                    Color(selectStatus.bgColor)
+                        .blur(radius: 4)
                     
                     interactView(geometry: geometry)
                         .frame(width: geometry.size.width, height: geometry.size.height)
@@ -34,7 +34,7 @@ struct SelectionView: View {
                                         VStack(spacing: 0) { 
                                             ForEach(intro.indices) { idx in 
                                                 Text(intro[idx].title)
-                                                    .foregroundColor(.white)
+                                                    .foregroundColor(.gray)
                                                     .font(.system(size: 24))
                                                     .bold()
                                                     .padding(.leading, 30)
@@ -45,7 +45,7 @@ struct SelectionView: View {
                                     })
                                     .background(
                                         Rectangle()
-                                            .foregroundColor(.black)
+                                            .foregroundColor(.gray)
                                             .opacity(0.1)
                                             .frame(height: geometry.size.height * 1.4)
                                     )
@@ -61,7 +61,7 @@ struct SelectionView: View {
                                                 .foregroundColor(.white)
                                                 .frame(width: geometry.size.width * 0.338, height: geometry.size.height * 0.09)
                                             RoundedRectangle(cornerRadius: 80)
-                                                .foregroundColor(.black)
+                                                .foregroundColor(selectStatus.themeColor)
                                                 .frame(width: geometry.size.width * 0.33, height: geometry.size.height * 0.0785)
                                             
                                         }
@@ -99,18 +99,18 @@ struct SelectionView: View {
                                 .frame(height: geometry.size.height * 0.19)
                             HStack(spacing: 18) {
                                 RoundedRectangle(cornerRadius: 100)
-                                    .foregroundColor(.white)
+                                    .foregroundColor(.gray)
                                     .frame(width: 3.7, height: 75)
                                 VStack(alignment: .leading, spacing: 10) {
                                     Text(selectItem.title)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.gray)
                                         .font(.system(size: 30))
                                         .bold()
                                     HStack {
                                         Image(systemName: "doc.fill.badge.plus")
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.gray)
                                         Text(selectItem.subtitle)
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.gray)
                                             .font(.system(size: 20))
                                     }
                                 }
@@ -169,7 +169,7 @@ struct SelectionView: View {
     func packButton(geometry: GeometryProxy) -> some View {
         ZStack {
             Diamond()
-                .foregroundColor(.black)
+                .foregroundColor(selectStatus.themeColor)
                 .frame(width: geometry.size.width * 0.36, height: geometry.size.height * 0.08)
             Text("INTRODUCTION")
                 .foregroundColor(.white)
@@ -213,7 +213,7 @@ struct SelectionView: View {
                 .foregroundColor(.white)
                 .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
             Diamond()
-                .foregroundColor(.black)
+                .foregroundColor(selectStatus.themeColor)
                 .frame(width: geometry.size.width * 0.08, height: geometry.size.height * 0.08)
                 .offset(x: -10)
             Image(systemName: "arrowshape.left")
