@@ -14,4 +14,5 @@ class Definetion: IntroItem {
                              ""], 
                    detail: [])
     }
+    
 }
