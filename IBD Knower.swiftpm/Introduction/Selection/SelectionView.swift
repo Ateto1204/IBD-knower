@@ -88,7 +88,7 @@ struct SelectionView: View {
                             }
                             .frame(width: geometry.size.width * 0.36, height: geometry.size.height)
                             
-//                            packButton(geometry: geometry)
+                            packButton(geometry: geometry)
                         }
                         
                         VStack(alignment: .leading) {
