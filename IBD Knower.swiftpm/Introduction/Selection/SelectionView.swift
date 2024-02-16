@@ -6,7 +6,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definition()
-    let intro: [IntroItem] = [Definition(), Symptom(), Cause(), Risk(), Complications(), Treatment()]
+    let intro: [IntroItem] = [Definition(), Symptom(), Cause(), Risk(), Complications(), Treatment(), Lifestyle()]
     
     var body: some View {
         GeometryReader { geometry in
@@ -203,7 +203,7 @@ struct SelectionView: View {
                     .conditionalEffect(
                         .repeat(
                             .glow(color: .white, radius: 85), 
-                            every: 1.75
+                            every: 1.4
                         ), 
                         condition: true
                     )
