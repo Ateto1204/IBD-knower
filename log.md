@@ -1,5 +1,8 @@
 # Project log
 
+#### 2024.02.16
+- Add introduction item of disease lifestyle
+
 #### 2024.02.15
 - Change APP theme color
 - Beauty APP interface
