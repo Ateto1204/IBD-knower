@@ -1,5 +1,9 @@
 # Project log
 
+#### 2024.02.18
+- Add introduction item of disease coping
+- Design question content
+
 #### 2024.02.16
 - Add introduction item of disease lifestyle
 
