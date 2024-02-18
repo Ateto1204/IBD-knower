@@ -6,7 +6,16 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definition()
-    let intro: [IntroItem] = [Definition(), Symptom(), Cause(), Risk(), Complications(), Treatment(), Lifestyle()]
+    
+    let intro: [IntroItem] = [Definition(), 
+                              Symptom(), 
+                              Cause(), 
+                              Risk(), 
+                              Complications(), 
+                              Treatment(), 
+                              Lifestyle(), 
+                              Coping()
+                            ]
     
     var body: some View {
         GeometryReader { geometry in
