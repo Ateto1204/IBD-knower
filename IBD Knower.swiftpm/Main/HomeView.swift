@@ -50,7 +50,7 @@ struct HomeView: View {
                             .frame(width: geometry.size.width * 0.1)
                         
                         Button {
-                            selectStatus.setStatus(newStatus: .QUIZ)
+                            
                         } label: {
                             VStack(spacing: 16) {
                                 ZStack {
