@@ -8,17 +8,17 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "我的 App",
+    name: "IBD Knower",
     platforms: [
         .iOS("17.0")
     ],
     products: [
         .iOSApplication(
-            name: "我的 App",
+            name: "IBD Knower",
             targets: ["AppModule"],
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .bird),
+            appIcon: .placeholder(icon: .bandage),
             accentColor: .presetColor(.brown),
             supportedDeviceFamilies: [
                 .pad,
@@ -29,7 +29,8 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ]
+            ],
+            appCategory: .medical
         )
     ],
     dependencies: [

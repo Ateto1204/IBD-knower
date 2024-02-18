@@ -1,9 +1,9 @@
 import SwiftUI
 
-class Definetion: IntroItem {
+class Definition: IntroItem {
     
     init() {
-        super.init(title: "Definetion", 
+        super.init(title: "Definition", 
                    subtitle: "What is IBD", 
                    abstract: ["Ulcerative colitis", 
                               "Crohn\'s disease", 
