@@ -3,8 +3,12 @@ import SwiftUI
 struct SelectionView: View {
     
     @State var offset: CGFloat = 0
-    @State var selectItem: IntroItem = Definition()
-    let intro: [IntroItem] = [Definition(), Symptom()]
+    @State var selectItem: IntroItem
+    let intro: [IntroItem] = [Definetion(), Symptom()]
+    
+    init() {
+        self.selectItem = intro[1]
+    }
     
     var body: some View {
         GeometryReader { geometry in 
@@ -159,7 +163,6 @@ struct SelectionView: View {
             }
             Spacer()
             HStack {
-                borderPattern(geometry: geometry)
                 Spacer()
                 detailButton(geometry: geometry)
                     .onTapGesture {
@@ -200,17 +203,5 @@ struct SelectionView: View {
         }
         .shadow(radius: 20)
         .offset(y: -20)
-    }
-    
-    func borderPattern(geometry: GeometryProxy) -> some View {
-        ZStack(alignment: .leading) {
-            Triangle()
-                .foregroundColor(.white)
-                .frame(width: geometry.size.width * 0.415, height: geometry.size.height * 0.21)
-            Triangle()
-                .foregroundColor(.black)
-                .frame(width: geometry.size.width * 0.415, height: geometry.size.height * 0.21)
-                .offset(x: -25)
-        }
     }
 }
