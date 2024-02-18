@@ -6,17 +6,16 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { geometry in 
             ZStack {
-                Color(selectStatus.bgColor)
-                    .blur(radius: 6)
+                Color.gray
+                    .blur(radius: 12)
                 
                 VStack {
                     Spacer()
                         .frame(height: geometry.size.height * 0.21)
                     // Image(systemName: "hand.draw.fill")
                     Image(systemName: "house.fill")
-                        .foregroundColor(.gray)
                     Text("IBD KNOWER")
-                        .foregroundColor(.gray)
+                        .foregroundColor(.white)
                         .font(.system(size: 41))
                         .bold()
                     Spacer()
@@ -38,8 +37,8 @@ struct HomeView: View {
                                         .foregroundColor(.white)
                                 }
                                 Text("INTRODUCTION")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 26))
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 24))
                                     .bold()
                             }
                         }
@@ -64,8 +63,8 @@ struct HomeView: View {
                                         .foregroundColor(.white)
                                 }
                                 Text("WARM UP")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 26))
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 24))
                                     .bold()
                             }
                         }
