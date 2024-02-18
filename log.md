@@ -3,6 +3,7 @@
 #### 2024.02.18
 - Add introduction item of disease coping
 - Design question content
+- Add move animation effect from pow package
 
 #### 2024.02.16
 - Add introduction item of disease lifestyle
