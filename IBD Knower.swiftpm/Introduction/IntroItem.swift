@@ -79,7 +79,7 @@ class IntroItem {
                                     }
                                 }
                                 
-                                ForEach(self.abstract.indices) { idx in 
+                                ForEach(self.abstract.indices) { idx in
                                     HStack {
                                         VStack(alignment: .leading) {
                                             Group {
@@ -100,6 +100,7 @@ class IntroItem {
                             }
                         }
                         .frame(width: geometry.size.width * 0.75, height: geometry.size.height * 0.75)
+                        .padding()
                     }
                     Spacer()
                 }

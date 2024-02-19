@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct SelectionView: View {
     
     @State var offset: CGFloat = 0

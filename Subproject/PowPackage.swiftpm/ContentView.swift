@@ -3,6 +3,7 @@ import Pow
 
 struct ContentView: View {
     @EnvironmentObject var selectStatus: SelectStatus
+    @State var num = 0
     
     var body: some View {
         switch selectStatus.status {
