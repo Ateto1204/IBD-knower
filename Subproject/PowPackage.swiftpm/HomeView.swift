@@ -1,4 +1,5 @@
 import SwiftUI
+import Pow
 
 struct HomeView: View {
     @EnvironmentObject var selectStatus: SelectStatus
@@ -8,6 +9,7 @@ struct HomeView: View {
             Group {
                 PushDown()
                 Glow()
+                Move()
             }
             .padding()
         }
