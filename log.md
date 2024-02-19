@@ -1,5 +1,9 @@
 # Project log
 
+#### 2024.02.19
+- Add introduction item of disease diagnosis
+- Add demo quiz view
+
 #### 2024.02.18
 - Add introduction item of disease coping
 - Design question content
