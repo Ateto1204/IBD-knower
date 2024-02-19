@@ -12,6 +12,7 @@ struct SelectionView: View {
                               Cause(), 
                               Risk(), 
                               Complications(), 
+                              Diagnosis(), 
                               Treatment(), 
                               Lifestyle(), 
                               Coping()
