@@ -10,6 +10,8 @@ struct ContentView: View {
                 HomeView()
             case .INTRO, .DETAIL:
                 SelectionView()
+            case .QUIZ: 
+                QuizDemo()
             }
         }
         .ignoresSafeArea()
