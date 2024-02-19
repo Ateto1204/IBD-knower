@@ -81,7 +81,6 @@ class IntroItem {
                                 
                                 ForEach(self.abstract.indices) { idx in 
                                     HStack {
-//                                        Spacer()
                                         VStack(alignment: .leading) {
                                             Group {
                                                 if !self.abstract[idx].isEmpty {
