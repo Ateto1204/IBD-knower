@@ -10,6 +10,7 @@ struct HomeView: View {
                 PushDown()
                 Glow()
                 Move()
+                Spray()
             }
             .padding()
         }
