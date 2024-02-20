@@ -4,6 +4,7 @@ class SelectStatus: ObservableObject {
     enum APPStatus {
         case HOME
         case DEMO
+        case SPRAY
     }
     
     @Published var status: APPStatus = .HOME

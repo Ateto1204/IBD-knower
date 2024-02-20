@@ -11,6 +11,8 @@ struct ContentView: View {
             HomeView()
         case .DEMO:
             demoView()
+        case .SPRAY: 
+            SprayView()
         }
     }
 }
