@@ -1,5 +1,9 @@
 # Project log
 
+#### 2024.02.20
+- Add spray animation effect from pow package
+- Add poof animation effect from pow package
+
 #### 2024.02.19
 - Add introduction item of disease diagnosis
 - Add demo quiz view
