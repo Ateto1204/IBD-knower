@@ -23,13 +23,32 @@ struct QuizView: View {
         self.isWrong = false
     }
     
-    let questions = ["A", "B", "C", "D", "E"]
-    let choices = [["a1", "a2", "a3", "a4"], 
-                    ["b1", "b2", "b3", "b4"], 
-                    ["c1", "c2", "c3", "c4"], 
-                    ["d1", "d2", "d3", "d4"], 
-                    ["e1", "e2", "e3", "e4"]]
-    let answers = [0, 0, 0, 0, 0]
+    let questions = ["What is \"IBD\" ?", 
+                     "What exactly causes IBD ?", 
+                     "Which of the following is a symptom directly caused by IBD ?", 
+                     "Smoking is beneficial for which of the following ?", 
+                     "Which one is more effected by IBD ?"]
+    let choices = [["Inborn Errors of Bile Metabolism", 
+                    "Inflammatory Bowel Disease", 
+                    "Inflammatory Bowel Disorder", 
+                    "Initial Business Development"], 
+                    ["Diet", 
+                     "Stress", 
+                     "Immune system malfunction", 
+                     "Still unknown"], 
+                    ["Joint pain", 
+                     "Dehydration", 
+                     "Bloody stools", 
+                     "Bowel obstruction"], 
+                    ["Ulcerative colitis (UC)", 
+                     "Crohn's disease", 
+                     "Both", 
+                     "Neither"], 
+                    ["Decline in quality of life", 
+                     "Depression", 
+                     "Huge medical expenses", 
+                     "All of the above"]]
+    let answers = [1, 3, 2, 0, 3]
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -102,33 +121,35 @@ struct QuizView: View {
         }
         .onChange(of: nextQuestion) {
             withAnimation {
-
+                
                 // However turn off the side which is true
                 let tmp = showQuesA ? true : false
-                if tmp {
-                    showQuesA.toggle()
-                } else {
-                    showQuesB.toggle()
+                withAnimation {
+                    if tmp {
+                        showQuesA.toggle()
+                    } else {
+                        showQuesB.toggle()
+                    }
                 }
-
+                
                 // Turn off the side which is turned on
                 if isCorrect {
                     isCorrect.toggle()
                 } else if isWrong {
                     isWrong.toggle()
                 }
-
+                
                 // Wait a minute to make poof effect from pow package not finish so quick
-                DispatchQueue.main.asyncAfter(deadline: .now() + (0.4)) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + (0.6)) {
                     animating.toggle()
-
-                    // Disable operating when move effect from pow package of the problem is animating
-                    DispatchQueue.main.asyncAfter(deadline: .now() + (0.8)) {
+                    
+                    // Disable do any operation when move effect from pow package of the problem is animating
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (1.1)) {
                         withAnimation {
                             animating.toggle()
                         }
                     }
-
+                    
                     // Turn the move effect from pow package of the problem on going
                     withAnimation {
                         if tmp {
