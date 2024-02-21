@@ -30,32 +30,32 @@ struct QuestionView: View {
                 Spacer()
             }
             .frame(height: 250)
-            .background(Color(uiColor: .secondarySystemBackground))
+            .background(Color(uiColor: .gray))
             .cornerRadius(10)
             .padding()
             
             ForEach(choices.indices) { idx in 
                 Button {
                     if idx == answer {
-
+                        
                         // Call the HUD to display correct hint
                         withAnimation {
                             correct.toggle()
                         }
-
-                        // We do not have to display next problem right away
+                        
+                        // Wait a minute because of we do not have to display next problem right away
                         DispatchQueue.main.asyncAfter(deadline: .now() + (1.35)) {
                             nextQues.toggle()
                         }
                     } else {
-
+                        
                         // Call the HUD to display wrong hint
                         withAnimation {
                             wrong.toggle()
                             self.animateShake += 1
                         }
-
-                        // Turn off HUD displaying
+                        
+                        // Wait a minute and turn off HUD displaying
                         DispatchQueue.main.asyncAfter(deadline: .now() + (1.35)) {
                             withAnimation {
                                 wrong.toggle()
@@ -81,8 +81,8 @@ struct QuestionView: View {
                             .frame(width: 25)
                             .foregroundColor(.green)
                     }, value: correct)
-                .disabled(correct || wrong)
             }
+            .disabled(correct || wrong)
         }
     }
 }
