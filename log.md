@@ -1,5 +1,12 @@
 # Project log
 
+#### 2024.02.22
+- Create subproject lifestyle menu
+
+#### 2024.02.21
+- Complete quiz view
+- Add quiz view to IBD Knower
+
 #### 2024.02.20
 - Add spray animation effect from pow package
 - Add poof animation effect from pow package
