@@ -32,22 +32,22 @@ struct QuizView: View {
                     "Inflammatory Bowel Disease", 
                     "Inflammatory Bowel Disorder", 
                     "Initial Business Development"], 
-                    ["Diet", 
-                     "Stress", 
-                     "Immune system malfunction", 
-                     "Still unknown"], 
-                    ["Joint pain", 
-                     "Dehydration", 
-                     "Bloody stools", 
-                     "Bowel obstruction"], 
-                    ["Ulcerative colitis (UC)", 
-                     "Crohn's disease", 
-                     "Both", 
-                     "Neither"], 
-                    ["Decline in quality of life", 
-                     "Depression", 
-                     "Huge medical expenses", 
-                     "All of the above"]]
+                   ["Diet", 
+                    "Stress", 
+                    "Immune system malfunction", 
+                    "Still unknown"], 
+                   ["Joint pain", 
+                    "Dehydration", 
+                    "Bloody stools", 
+                    "Bowel obstruction"], 
+                   ["Ulcerative colitis (UC)", 
+                    "Crohn's disease", 
+                    "Both", 
+                    "Neither"], 
+                   ["Decline in quality of life", 
+                    "Depression", 
+                    "Huge medical expenses", 
+                    "All of the above"]]
     let answers = [1, 3, 2, 0, 3]
     
     var body: some View {
@@ -61,15 +61,15 @@ struct QuizView: View {
                              question: questions[quesNo], 
                              choices: choices[quesNo], 
                              answer: answers[quesNo])
-                    .transition(
-                        .asymmetric(
-                            insertion: .movingParts.move(
-                                angle: .degrees(5)
-                            ), 
-                            removal: .movingParts.poof
-                        ).combined(with: .opacity)
-                    )
-                    .disabled(animating)
+                .transition(
+                    .asymmetric(
+                        insertion: .movingParts.move(
+                            angle: .degrees(5)
+                        ), 
+                        removal: .movingParts.poof
+                    ).combined(with: .opacity)
+                )
+                .disabled(animating)
             }
             if showQuesB {
                 QuestionView(nextQues: $nextQuestion,

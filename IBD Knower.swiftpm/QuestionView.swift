@@ -14,6 +14,7 @@ struct QuestionView: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            Spacer()
             HStack {
                 Spacer()
                 VStack {
@@ -83,6 +84,7 @@ struct QuestionView: View {
                     }, value: correct)
             }
             .disabled(correct || wrong)
+            Spacer()
         }
     }
 }
