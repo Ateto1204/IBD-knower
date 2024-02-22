@@ -11,7 +11,7 @@ struct ContentView: View {
             case .INTRO, .DETAIL:
                 SelectionView()
             case .QUIZ: 
-                QuizDemo()
+                QuizView()
             }
         }
         .ignoresSafeArea()
