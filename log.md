@@ -1,5 +1,9 @@
 # Project log
 
+#### 2024.02.23
+- Make subproject of lifestyle menu enable work
+- Add lifestyle menu to IBD Knower
+
 #### 2024.02.22
 - Create subproject lifestyle menu
 
