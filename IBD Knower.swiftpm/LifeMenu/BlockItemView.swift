@@ -17,11 +17,31 @@ struct BlockItemView: View {
     var body: some View {
         GeometryReader { geometry in 
             VStack {
-                Text(title)
-                    .font(.system(size: 42))
-                    .foregroundColor(.white)
-                    .padding()
-                ScrollView() {
+                ZStack {
+                    HStack {
+                        Spacer()
+                        Text(title)
+                            .font(.system(size: 42))
+                            .foregroundColor(.gray)
+                            .padding()
+                        Spacer()
+                    }
+                    HStack {
+                        Spacer()
+                        Button {
+                            isSelected = false
+                        } label: {
+                            Image(systemName: "xmark.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 28)
+                                .foregroundColor(.gray)
+                                .padding()
+                        }
+                        .padding()
+                    }
+                }
+                ScrollView(showsIndicators: false) {
                     ForEach(items.indices) { idx in 
                         Button {
                             selectedTitle = items[idx]
@@ -54,7 +74,8 @@ struct BlockItemView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 12)
                                 .foregroundColor(theme)
-                                .frame(width: geometry.size.width * 0.9))
+                                .frame(width: geometry.size.width * 0.9)
+                                .shadow(radius: 6))
                         .padding()
                     }
                 }

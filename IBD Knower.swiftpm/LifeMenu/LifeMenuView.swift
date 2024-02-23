@@ -19,6 +19,8 @@ struct LifeMenuView: View {
     @State var workPhysical: Int = 0
     @State var workMental: Int = 0
     
+    @State var isPressed: Bool = false
+    
     var body: some View {
         ZStack {
             Color(selectStatus.bgColor)
@@ -77,22 +79,45 @@ struct LifeMenuView: View {
                 
                 HStack {
                     Spacer()
-                    Text("RUN")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 21)
-                                .foregroundColor(runable() ? .green : .gray))
-                        .onTapGesture() {
-                            
+                    Button {
+                        withAnimation {
+                            self.isPressed = true
                         }
-                        .disabled(runable())
+                    } label: {
+                        Text("RUN")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 21)
+                                    .foregroundColor(runable() ? selectStatus.themeColor : .gray)
+                                    .shadow(radius: 3.4))
+                    }
+                    .sheet(isPresented: $isPressed) {
+                        ZStack {
+                            Color(selectStatus.bgColor)
+                            if physicalSum() >= 30 && mentalSum() >= 30 {
+                                VStack {
+                                    Text("Successful!")
+                                        .foregroundColor(.gray)
+                                    Button("Got it") {
+                                        selectStatus.setStatus(newStatus: .HOME)
+                                    }
+                                }
+                            } else if physicalSum() < 30 {
+                                Text("GG")
+                            } else if mentalSum() < 30 {
+                                Text("EMO")
+                            }
+                        }
+                    }
+                    .disabled(!runable())
                     Text("Physical: \(physicalSum()); Mental: \(mentalSum())")
                         .foregroundColor(.gray)
                     Spacer()
                 }
                 .padding()
             }
+            .padding()
         }
     }
     

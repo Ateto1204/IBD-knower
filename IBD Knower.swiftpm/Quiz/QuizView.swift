@@ -52,6 +52,7 @@ struct QuizView: View {
                     QuestionView(nextQues: $nextQuestion,
                                  correct: $isCorrect, 
                                  wrong: $isWrong, 
+                                 animating: $animating, 
                                  question: questions[quesNo], 
                                  choices: choices[quesNo], 
                                  answer: answers[quesNo])
@@ -63,12 +64,14 @@ struct QuizView: View {
                             removal: .movingParts.poof
                         ).combined(with: .opacity)
                     )
+                    .padding()
                     .disabled(animating)
                 }
                 if showQuesB {
                     QuestionView(nextQues: $nextQuestion,
                                  correct: $isCorrect, 
                                  wrong: $isWrong, 
+                                 animating: $animating, 
                                  question: questions[quesNo], 
                                  choices: choices[quesNo], 
                                  answer: answers[quesNo])
@@ -80,6 +83,7 @@ struct QuizView: View {
                             removal: .movingParts.poof
                         ).combined(with: .opacity)
                     )
+                    .padding()
                     .disabled(animating)
                 }
                 if quesClear {
@@ -192,6 +196,7 @@ struct QuizView: View {
                     }
                 }
             }
+            .padding()
         }
     }
 }
@@ -210,5 +215,6 @@ struct HUD<Content: View>: View {
                     .foregroundColor(selectStatus.bgColor)
                     .shadow(color: Color(.black).opacity(0.15), radius: 10, x: 0, y: 4)
             )
+            .opacity(0.8)
     }
 }
