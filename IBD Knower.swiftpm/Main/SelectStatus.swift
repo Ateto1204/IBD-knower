@@ -6,6 +6,7 @@ class SelectStatus: ObservableObject {
         case INTRO
         case DETAIL
         case QUIZ
+        case LIFE
     }
     
     @Published var status: APPstatus = .HOME
