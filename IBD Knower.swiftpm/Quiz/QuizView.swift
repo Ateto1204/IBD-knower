@@ -45,6 +45,14 @@ struct QuizView: View {
     var body: some View {
         ZStack {
             Color(selectStatus.themeColor)
+            
+            if !quesClear {
+                Guideline() {
+                    Text("QUIZ DEMO")
+                        .foregroundColor(.gray)
+                }
+            }
+            
             ZStack(alignment: .bottom) {
                 
                 if showQuesA {
