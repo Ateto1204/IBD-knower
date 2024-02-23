@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct LifeMenuView: View {
+    @EnvironmentObject var selectStatus: SelectStatus
+    
     @State var dietSelect: Bool = false
     @State var dietPhysical: Int = 0
     @State var dietMental: Int = 0
@@ -87,7 +89,12 @@ struct LifeMenuView: View {
                     }
                     .sheet(isPresented: $isPressed) {
                         if physicalSum() >= 30 && mentalSum() >= 30 {
-                            Text("Successful!")
+                            VStack {
+                                Text("Successful!")
+                                Button("Got it") {
+                                    selectStatus.setStatus(newStatus: .HOME)
+                                }
+                            }
                         } else if physicalSum() < 30 {
                             Text("GG")
                         } else if mentalSum() < 30 {
