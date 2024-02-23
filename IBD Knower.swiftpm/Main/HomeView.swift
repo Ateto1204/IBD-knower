@@ -2,7 +2,6 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var selectStatus: SelectStatus
-    @State var showGuide: Bool = false
     
     var body: some View {
         GeometryReader { geometry in 
@@ -11,7 +10,7 @@ struct HomeView: View {
                     .blur(radius: 6)
                 
                 Guideline() {
-                    Text("DEMO")
+                    Text("HOME DEMO")
                         .foregroundColor(.gray)
                 }
                 

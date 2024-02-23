@@ -25,6 +25,11 @@ struct LifeMenuView: View {
         ZStack {
             Color(selectStatus.bgColor)
             
+            Guideline() {
+                Text("LIFESTYLE DEMO")
+                    .foregroundColor(.gray)
+            }
+            
             VStack {
                 Spacer()
                 HStack {

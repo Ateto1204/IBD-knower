@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Guideline<Content: View>: View {
     @EnvironmentObject var selectStatus: SelectStatus
-    @State var showGuide: Bool = true
+    @State var showGuide: Bool = false
     
     @ViewBuilder let content: Content
     
@@ -11,16 +11,20 @@ struct Guideline<Content: View>: View {
             HStack {
                 Spacer()
                 Button {
-                    showGuide.toggle()
+                    self.showGuide = true
                 } label: {
-                    Image(systemName: "questionmark.app.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 37)
-                        .foregroundColor(.gray)
-                        .opacity(0.76)
-                        .padding()
-                        .shadow(radius: 1.3)
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.white)
+                            .frame(width: 25, height: 25)
+                        Image(systemName: "questionmark.app.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 37)
+                            .foregroundColor(.gray)
+                            .shadow(radius: 1.3)
+                    }
+                    .padding()
                 }
                 .padding()
                 .sheet(isPresented: $showGuide) {
@@ -31,9 +35,18 @@ struct Guideline<Content: View>: View {
                         }
                     }
                 }
+                .onChange(of: showGuide) {
+                    selectStatus.setIfGuide(status: selectStatus.status)
+                }
             }
             .padding()
             Spacer()
+        }
+        .onAppear() {
+            let ifGuide = selectStatus.getIfGuide(status: selectStatus.status)
+            if ifGuide {
+                self.showGuide = true
+            }
         }
     }
 }
@@ -52,7 +65,7 @@ struct GuidelineView<Content: View>: View {
                 HStack {
                     Spacer()
                     Button {
-                        showGuide.toggle()
+                        showGuide = false
                     } label: {
                         Image(systemName: "xmark.circle")
                             .resizable()
