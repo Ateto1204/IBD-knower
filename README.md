@@ -31,3 +31,29 @@ WWDC24 Swift Student Challenge (Developing)
 <div style="text-align:center;">
   <img src="demo5.jpg" alt="Image" style="width:600px;">
 </div>
+
+### Life Menu
+
+<div style="text-align:center;">
+  <img src="demo6.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo7.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo8.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo9.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo10.jpg" alt="Image" style="width:600px;">
+</div>
+
+<div style="text-align:center;">
+  <img src="demo11.jpg" alt="Image" style="width:600px;">
+</div>
