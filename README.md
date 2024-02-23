@@ -39,21 +39,13 @@ WWDC24 Swift Student Challenge (Developing)
 </div>
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo7.jpg" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo7.PNG" alt="Image" style="width:600px;">
 </div>
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo8.jpg" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo8.PNG" alt="Image" style="width:600px;">
 </div>
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo9.jpg" alt="Image" style="width:600px;">
-</div>
-
-<div style="text-align:center;">
-  <img src="demoScreens/demo10.jpg" alt="Image" style="width:600px;">
-</div>
-
-<div style="text-align:center;">
-  <img src="demoScreens/demo11.jpg" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo9.PNG" alt="Image" style="width:600px;">
 </div>
