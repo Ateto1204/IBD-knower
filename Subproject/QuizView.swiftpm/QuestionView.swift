@@ -85,6 +85,15 @@ struct QuestionView: View {
             .disabled(correct || wrong)
         }
     }
+    
+    func nextQuestion() async {
+        do {
+            try await Task.sleep(nanoseconds: 13 * 100_000_000)
+        } catch {
+            print(error)
+        }
+        nextQues.toggle()
+    }
 }
 
 struct ShakeEffect: GeometryEffect {
