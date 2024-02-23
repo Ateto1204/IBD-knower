@@ -4,6 +4,7 @@
  */
 
 import SwiftUI
+import TipKit
 
 @main
 struct MyApp: App {
@@ -14,5 +15,12 @@ struct MyApp: App {
             ContentView()
                 .environmentObject(selectStatus)
         }
+    }
+    
+    init() {
+        try? Tips.configure([
+            .displayFrequency(.immediate), 
+            .datastoreLocation(.applicationDefault)
+        ])
     }
 }

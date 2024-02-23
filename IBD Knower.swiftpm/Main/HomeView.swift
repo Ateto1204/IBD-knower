@@ -2,12 +2,18 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var selectStatus: SelectStatus
+    @State var showGuide: Bool = false
     
     var body: some View {
         GeometryReader { geometry in 
             ZStack {
                 Color(selectStatus.bgColor)
                     .blur(radius: 6)
+                
+                Guideline() {
+                    Text("DEMO")
+                        .foregroundColor(.gray)
+                }
                 
                 VStack {
                     Spacer()
