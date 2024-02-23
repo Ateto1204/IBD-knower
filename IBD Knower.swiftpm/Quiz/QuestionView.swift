@@ -7,6 +7,7 @@ struct QuestionView: View {
     @Binding var nextQues: Bool
     @Binding var correct: Bool
     @Binding var wrong: Bool
+    @Binding var animating: Bool
     
     @State private var animateShake: Int = 0
     
@@ -36,6 +37,7 @@ struct QuestionView: View {
             .background(Color(selectStatus.bgColor))
             .cornerRadius(10)
             .padding()
+            .shadow(radius: 13)
             
             ForEach(choices.indices) { idx in 
                 Button {
@@ -73,7 +75,7 @@ struct QuestionView: View {
                         Spacer()
                     }
                     .padding(12)
-                    .background(Color(selectStatus.bgColor).opacity(0.41))
+                    .background(Color(selectStatus.bgColor).opacity(correct || wrong || animating ? 0.13 : 0.41))
                     .cornerRadius(12)
                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                 }
