@@ -99,14 +99,25 @@ struct LifeMenuView: View {
                                 VStack {
                                     Text("Successful!")
                                         .foregroundColor(.gray)
+                                    Text("You successfully find a balance that stabilizes your condition and maintains a happy mood.")
                                     Button("Got it") {
                                         selectStatus.setStatus(newStatus: .HOME)
                                     }
                                 }
                             } else if physicalSum() < 30 {
-                                Text("GG")
+                                VStack {
+                                    Text("Worsening of condition")
+                                        .foregroundColor(.gray)
+                                    Text("This decision will make your condition worse.")
+                                        .foregroundColor(.gray)
+                                }
                             } else if mentalSum() < 30 {
-                                Text("EMO")
+                                VStack {
+                                    Text("Depression")
+                                        .foregroundColor(.gray)
+                                    Text("This choice can make you feel depressed or stressed out.")
+                                        .foregroundColor(.gray)
+                                }
                             }
                         }
                     }
