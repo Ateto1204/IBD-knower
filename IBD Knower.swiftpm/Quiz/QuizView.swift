@@ -53,129 +53,131 @@ struct QuizView: View {
     let answers = [1, 3, 2, 0, 3]
     
     var body: some View {
-        ZStack(alignment: .bottom) {
+        ZStack {
             Color(selectStatus.themeColor)
-            
-            if showQuesA {
-                // Appear with move effect from pow package
-                QuestionView(nextQues: $nextQuestion,
-                             correct: $isCorrect, 
-                             wrong: $isWrong, 
-                             question: questions[quesNo], 
-                             choices: choices[quesNo], 
-                             answer: answers[quesNo])
-                .transition(
-                    .asymmetric(
-                        insertion: .movingParts.move(
-                            angle: .degrees(5)
-                        ), 
-                        removal: .movingParts.poof
-                    ).combined(with: .opacity)
-                )
-                .disabled(animating)
-            }
-            if showQuesB {
-                QuestionView(nextQues: $nextQuestion,
-                             correct: $isCorrect, 
-                             wrong: $isWrong, 
-                             question: questions[quesNo], 
-                             choices: choices[quesNo], 
-                             answer: answers[quesNo])
-                .transition(
-                    .asymmetric(
-                        insertion: .movingParts.move(
-                            angle: .degrees(5)
-                        ), 
-                        removal: .movingParts.poof
-                    ).combined(with: .opacity)
-                )
-                .disabled(animating)
-            }
-            
-            // Show HUD if user has answered
-            if isCorrect || isWrong {
-                HUD {
-                    if self.isCorrect {
-                        HStack {
-                            Image(systemName: "checkmark.circle.fill")
-                                .foregroundColor(.green)
-                                .background(Circle()
-                                    .foregroundColor(.white))
-                            Text("That's correct")
-                                .padding(.leading, 5)
-                                .foregroundColor(.white)
-                        }
-                    } else if self.isWrong {
-                        HStack {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.red)
-                                .background(Circle()
-                                    .foregroundColor(.white))
-                            Text("That's wrong, try again")
-                                .padding(.leading, 5)
-                                .foregroundColor(.white)
+            ZStack(alignment: .bottom) {
+                
+                if showQuesA {
+                    // Appear with move effect from pow package
+                    QuestionView(nextQues: $nextQuestion,
+                                 correct: $isCorrect, 
+                                 wrong: $isWrong, 
+                                 question: questions[quesNo], 
+                                 choices: choices[quesNo], 
+                                 answer: answers[quesNo])
+                    .transition(
+                        .asymmetric(
+                            insertion: .movingParts.move(
+                                angle: .degrees(5)
+                            ), 
+                            removal: .movingParts.poof
+                        ).combined(with: .opacity)
+                    )
+                    .disabled(animating)
+                }
+                if showQuesB {
+                    QuestionView(nextQues: $nextQuestion,
+                                 correct: $isCorrect, 
+                                 wrong: $isWrong, 
+                                 question: questions[quesNo], 
+                                 choices: choices[quesNo], 
+                                 answer: answers[quesNo])
+                    .transition(
+                        .asymmetric(
+                            insertion: .movingParts.move(
+                                angle: .degrees(5)
+                            ), 
+                            removal: .movingParts.poof
+                        ).combined(with: .opacity)
+                    )
+                    .disabled(animating)
+                }
+                
+                // Show HUD if user has answered
+                if isCorrect || isWrong {
+                    HUD {
+                        if self.isCorrect {
+                            HStack {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.green)
+                                    .background(Circle()
+                                        .foregroundColor(.white))
+                                Text("That's correct")
+                                    .padding(.leading, 5)
+                                    .foregroundColor(selectStatus.themeColor)
+                            }
+                        } else if self.isWrong {
+                            HStack {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.red)
+                                    .background(Circle()
+                                        .foregroundColor(.white))
+                                Text("That's wrong, try again")
+                                    .padding(.leading, 5)
+                                    .foregroundColor(selectStatus.themeColor)
+                            }
                         }
                     }
+                    .zIndex(1)
+                    .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
+                    .padding(.bottom)
                 }
-                .zIndex(1)
-                .transition(AnyTransition.move(edge: .bottom).combined(with: .opacity))
-                .padding(.bottom)
             }
-        }
-        .onAppear() {
-            withAnimation {
-                showQuesA.toggle()
-            }
-        }
-        .onChange(of: nextQuestion) {
-            withAnimation {
-                
-                // However turn off the side which is true
-                let tmp = showQuesA ? true : false
+            .onAppear() {
                 withAnimation {
-                    if tmp {
-                        showQuesA.toggle()
-                    } else {
-                        showQuesB.toggle()
-                    }
+                    showQuesA.toggle()
                 }
-                
-                // Turn off the side which is turned on
-                if isCorrect {
-                    isCorrect.toggle()
-                } else if isWrong {
-                    isWrong.toggle()
-                }
-                
-                // Wait a minute to make poof effect from pow package not finish so quick
-                DispatchQueue.main.asyncAfter(deadline: .now() + (0.6)) {
-                    animating.toggle()
+            }
+            .onChange(of: nextQuestion) {
+                withAnimation {
                     
-                    // Disable do any operation when move effect from pow package of the problem is animating
-                    DispatchQueue.main.asyncAfter(deadline: .now() + (1.1)) {
-                        withAnimation {
-                            animating.toggle()
-                        }
-                    }
-                    
-                    // Turn the move effect from pow package of the problem on going
+                    // However turn off the side which is true
+                    let tmp = showQuesA ? true : false
                     withAnimation {
                         if tmp {
-                            showQuesB.toggle()
-                        } else {
                             showQuesA.toggle()
+                        } else {
+                            showQuesB.toggle()
+                        }
+                    }
+                    
+                    // Turn off the side which is turned on
+                    if isCorrect {
+                        isCorrect.toggle()
+                    } else if isWrong {
+                        isWrong.toggle()
+                    }
+                    
+                    // Wait a minute to make poof effect from pow package not finish so quick
+                    DispatchQueue.main.asyncAfter(deadline: .now() + (0.6)) {
+                        animating.toggle()
+                        
+                        // Disable do any operation when move effect from pow package of the problem is animating
+                        DispatchQueue.main.asyncAfter(deadline: .now() + (1.1)) {
+                            withAnimation {
+                                animating.toggle()
+                            }
+                        }
+                        
+                        // Turn the move effect from pow package of the problem on going
+                        withAnimation {
+                            if tmp {
+                                showQuesB.toggle()
+                            } else {
+                                showQuesA.toggle()
+                            }
                         }
                     }
                 }
+                if quesNo + 1 < questions.count {
+                    self.quesNo += 1
+                }
             }
-            if quesNo + 1 < questions.count {
-                self.quesNo += 1
-            }
-        }
-        .onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + (0.8)) {
-                withAnimation {
-                    animating.toggle()
+            .onAppear() {
+                DispatchQueue.main.asyncAfter(deadline: .now() + (0.8)) {
+                    withAnimation {
+                        animating.toggle()
+                    }
                 }
             }
         }
@@ -183,7 +185,7 @@ struct QuizView: View {
 }
 
 struct HUD<Content: View>: View {
-    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.colorScheme) public var colorScheme
     @EnvironmentObject private var selectStatus: SelectStatus
     @ViewBuilder let content: Content
     
@@ -193,7 +195,7 @@ struct HUD<Content: View>: View {
             .padding(16)
             .background(
                 Capsule()
-                    .foregroundColor(colorScheme == .dark ? .gray : selectStatus.bgColor)
+                    .foregroundColor(selectStatus.bgColor)
                     .shadow(color: Color(.black).opacity(0.15), radius: 10, x: 0, y: 4)
             )
     }

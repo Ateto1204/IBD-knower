@@ -77,7 +77,7 @@ struct QuestionView: View {
                     .cornerRadius(12)
                     .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8))
                 }
-                .padding(.top, 18)
+                .padding()
                 .changeEffect(
                     .spray(origin: UnitPoint(x: 0.25, y: 0.5)) {
                         Image(systemName: "checkmark")
