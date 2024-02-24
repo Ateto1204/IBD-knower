@@ -10,7 +10,7 @@ WWDC24 Swift Student Challenge (Developing)
 ### Introduction Screen
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo1.PNG" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo1.jpg" alt="Image" style="width:600px;">
 </div>
 
 <div style="text-align:center;">
@@ -21,7 +21,7 @@ WWDC24 Swift Student Challenge (Developing)
 ### Quiz Screen
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo3.PNG" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo3.jpg" alt="Image" style="width:600px;">
 </div>
 
 <div style="text-align:center;">
@@ -29,13 +29,13 @@ WWDC24 Swift Student Challenge (Developing)
 </div>
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo5.PNG" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo5.jpg" alt="Image" style="width:600px;">
 </div>
 
 ### Life Menu
 
 <div style="text-align:center;">
-  <img src="demoScreens/demo6.PNG" alt="Image" style="width:600px;">
+  <img src="demoScreens/demo6.jpg" alt="Image" style="width:600px;">
 </div>
 
 <div style="text-align:center;">

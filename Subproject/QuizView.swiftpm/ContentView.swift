@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var status = 0
+    @State var status: Int = 0
     @State private var isGuiding: Bool = true
     
     var body: some View {
@@ -14,7 +14,7 @@ struct ContentView: View {
                 }
                 .disabled(isGuiding)
             } else if status == 1 {
-                QuizView()
+                QuizView(status: $status)
             }
             
             if isGuiding {

@@ -3,25 +3,17 @@ import Combine
 import Pow
 
 struct QuizView: View {
-    @State private var showQuesA: Bool
-    @State private var showQuesB: Bool
-    @State var nextQuestion: Bool
-    @State private var quesNo: Int
+    @Binding var status: Int
     
-    @State private var animating: Bool
-    @State var isCorrect: Bool
-    @State var isWrong: Bool
+    @State private var showQuesA = false
+    @State private var showQuesB = false
+    @State var nextQuestion = false
+    @State private var quesNo = 0
+    @State var quesClear = false
     
-    init() {
-        self.showQuesA = false
-        self.showQuesB = false
-        self.nextQuestion = false
-        self.quesNo = 0
-        
-        self.animating = true
-        self.isCorrect = false
-        self.isWrong = false
-    }
+    @State private var animating = true
+    @State var isCorrect = false
+    @State var isWrong = false
     
     let questions = ["What is \"IBD\" ?", 
                      "What exactly causes IBD ?", 
@@ -91,6 +83,25 @@ struct QuizView: View {
                     .disabled(animating)
                 }
                 
+                if quesClear {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 21)
+                            .foregroundColor(.white)
+                            .frame(width: 250, height: 250)
+                        VStack {
+                            Text("CLEAR")
+                                .foregroundColor(.black)
+                            Button {
+                                withAnimation {
+                                    status = 0
+                                }
+                            } label: {
+                                Text("Got it")
+                            }
+                        }
+                    }
+                }
+                
                 // Show HUD if user has answered
                 if isCorrect || isWrong {
                     HUD {
@@ -153,17 +164,23 @@ struct QuizView: View {
                         }
                         
                         // Turn the move effect from pow package of the problem on going
-                        withAnimation {
-                            if tmp {
-                                showQuesB.toggle()
-                            } else {
-                                showQuesA.toggle()
+                        self.quesNo += 1
+                        if quesNo < questions.count {
+                            withAnimation {
+                                if tmp {
+                                    showQuesB.toggle()
+                                } else {
+                                    showQuesA.toggle()
+                                }
+                            }
+                        } else {
+                            withAnimation {
+                                self.showQuesA = false
+                                self.showQuesB = false
+                                self.quesClear = true
                             }
                         }
                     }
-                }
-                if quesNo + 1 < questions.count {
-                    self.quesNo += 1
                 }
             }
             .onAppear() {

@@ -115,7 +115,7 @@ struct LifeMenuView: View {
                                     Button {
                                         selectStatus.setStatus(newStatus: .HOME)
                                     } label: {
-                                        Text("DONE")
+                                        Text("GOT IT")
                                             .foregroundColor(.white)
                                             .frame(width: 53.6, height: 16)
                                             .padding()
@@ -125,13 +125,27 @@ struct LifeMenuView: View {
                                     }
                                 }
                             } else if physicalSum() < 30 {
-                                WrongTipView(isPressed: $isPressed, 
-                                             title: "Worsening of Condition...", 
-                                             description: "This decision will make your condition worse.")
+                                VStack {
+                                    Group {
+                                        Text("Worsening of Condition...")
+                                            .font(.largeTitle)
+                                            .bold()
+                                        Text("This decision will make your condition worse.")
+                                    }
+                                    .foregroundColor(.gray)
+                                    .padding()
+                                }
                             } else if mentalSum() < 30 {
-                                WrongTipView(isPressed: $isPressed, 
-                                             title: "Depression...", 
-                                             description: "This choice can make you feel depressed or stressed out.")
+                                VStack {
+                                    Group {
+                                        Text("Depression...")
+                                            .font(.largeTitle)
+                                            .bold()
+                                        Text("This choice can make you feel depressed or stressed out.")
+                                    }
+                                    .foregroundColor(.gray)
+                                    .padding()
+                                }
                             }
                         }
                     }
