@@ -23,6 +23,7 @@ struct BlockItemView: View {
                         Text(title)
                             .font(.system(size: 42))
                             .foregroundColor(.gray)
+                            .bold()
                             .padding()
                         Spacer()
                     }
@@ -53,7 +54,8 @@ struct BlockItemView: View {
                             HStack {
                                 VStack(alignment: .leading) {
                                     Text(items[idx])
-                                        .font(.system(size: 20))
+                                        .font(.system(size: 21))
+                                        .bold()
                                         .foregroundColor(.white)
                                         .multilineTextAlignment(.leading)
                                         .padding()

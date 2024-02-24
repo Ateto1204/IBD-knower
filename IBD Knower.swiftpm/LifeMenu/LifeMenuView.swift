@@ -37,10 +37,10 @@ struct LifeMenuView: View {
                               selectedPhysical: $dietPhysical,
                               selectedMental: $dietMental, 
                               title: "Diet", 
-                              items: ["Overeating witout restraint, eating whatever you want", 
-                                      "Occasionally eat inedible foods, but usually pay attention to your diet", 
-                                      "Eat only the food you can eat and don’t eat anything you can’t eat at all", 
-                                      "Eat a very light diet or only eat foods with high nutritional value"], 
+                              items: ["Overeating witout restraint, eating whatever you want.", 
+                                      "Occasionally eat inedible foods, but usually pay attention to your diet.", 
+                                      "Eat only the food you can eat and don’t eat anything you can’t eat at all.", 
+                                      "Eat a very light diet or only eat foods with high nutritional value."], 
                               theme: Color.red, 
                               physical: [-60, -20, 10, 20], 
                               mental: [40, 20, -20, -40])
@@ -48,7 +48,7 @@ struct LifeMenuView: View {
                               selectedPhysical: $medicinePhysical,
                               selectedMental: $medicineMental, 
                               title: "Take Medicine", 
-                              items: ["Take your medication on time and follow your doctor's instructions and check your physical condition regularly", 
+                              items: ["Take your medication on time and follow your doctor's instructions and check your physical condition regularly.", 
                                       "Occasionally, I forget to take my medicine, but I follow up regularly to check my physical condition.", 
                                       "I often forget to take my medicine but I follow up regularly to check my physical condition.", 
                                       "I will choose to take medicine if I feel something strange or uncomfortable in my body."], 
@@ -67,7 +67,7 @@ struct LifeMenuView: View {
                                       "I often stay up late or have irregular routine."], 
                               theme: Color.green, 
                               physical: [25, 15, 0, -30], 
-                              mental: [-20, 0, 10, 20])
+                              mental: [-5, 0, 10, 20])
                     BlockView(hasSelect: $workSelect, 
                               selectedPhysical: $workPhysical, 
                               selectedMental: $workMental, 
@@ -89,39 +89,62 @@ struct LifeMenuView: View {
                             self.isPressed = true
                         }
                     } label: {
-                        Text("RUN")
+                        Text("TRY IT")
                             .foregroundColor(.white)
+                            .frame(width: 53.6)
                             .padding()
                             .background(
-                                RoundedRectangle(cornerRadius: 21)
+                                RoundedRectangle(cornerRadius: 19)
                                     .foregroundColor(runable() ? selectStatus.themeColor : .gray)
-                                    .shadow(radius: 3.4))
+                                    .shadow(radius: 2.6))
                     }
                     .sheet(isPresented: $isPressed) {
                         ZStack {
                             Color(selectStatus.bgColor)
                             if physicalSum() >= 30 && mentalSum() >= 30 {
                                 VStack {
-                                    Text("Successful!")
-                                        .foregroundColor(.gray)
-                                    Text("You successfully find a balance that stabilizes your condition and maintains a happy mood.")
-                                    Button("Got it") {
+                                    Group {
+                                        Text("Successful !")
+                                            .font(.largeTitle)
+                                            .bold()
+                                        Text("You successfully find a balance that stabilizes your condition and maintains a happy mood.")
+                                            .multilineTextAlignment(.center)
+                                    }
+                                    .foregroundColor(.gray)
+                                    .padding()
+                                    Button {
                                         selectStatus.setStatus(newStatus: .HOME)
+                                    } label: {
+                                        Text("GOT IT")
+                                            .foregroundColor(.white)
+                                            .frame(width: 53.6, height: 16)
+                                            .padding()
+                                            .background(RoundedRectangle(cornerRadius: 18)
+                                                .foregroundColor(Color(uiColor: .systemBlue))
+                                                .shadow(radius: 3.2))
                                     }
                                 }
                             } else if physicalSum() < 30 {
                                 VStack {
-                                    Text("Worsening of condition")
-                                        .foregroundColor(.gray)
-                                    Text("This decision will make your condition worse.")
-                                        .foregroundColor(.gray)
+                                    Group {
+                                        Text("Worsening of Condition...")
+                                            .font(.largeTitle)
+                                            .bold()
+                                        Text("This decision will make your condition worse.")
+                                    }
+                                    .foregroundColor(.gray)
+                                    .padding()
                                 }
                             } else if mentalSum() < 30 {
                                 VStack {
-                                    Text("Depression")
-                                        .foregroundColor(.gray)
-                                    Text("This choice can make you feel depressed or stressed out.")
-                                        .foregroundColor(.gray)
+                                    Group {
+                                        Text("Depression...")
+                                            .font(.largeTitle)
+                                            .bold()
+                                        Text("This choice can make you feel depressed or stressed out.")
+                                    }
+                                    .foregroundColor(.gray)
+                                    .padding()
                                 }
                             }
                         }

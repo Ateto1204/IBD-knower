@@ -72,7 +72,6 @@ struct GuidelineView<Content: View>: View {
                             .scaledToFit()
                             .frame(width: 28)
                             .foregroundColor(.gray)
-                            .padding()
                             .shadow(radius: 0.76)
                     }
                     .padding()
