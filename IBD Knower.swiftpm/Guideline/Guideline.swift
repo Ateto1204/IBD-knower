@@ -83,6 +83,27 @@ struct GuidelineView<Content: View>: View {
             content
                 .padding()
             
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        showGuide = false
+                    } label: {
+                        Text("GOT IT")
+                            .foregroundColor(.white)
+                            .bold()
+                            .frame(width: 55.6, height: 16)
+                            .padding()
+                            .background(RoundedRectangle(cornerRadius: 10.9)
+                                .foregroundColor(Color(uiColor: .systemBlue))
+                                .shadow(radius: 3.2))
+                    }
+                    Spacer()
+                }
+                .padding()
+            }
+            
         }
         .ignoresSafeArea()
     }

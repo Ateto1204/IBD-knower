@@ -48,8 +48,7 @@ struct QuizView: View {
             
             if !quesClear {
                 Guideline() {
-                    Text("QUIZ DEMO")
-                        .foregroundColor(.gray)
+                    QuizGuideContent()
                 }
             }
             
@@ -103,6 +102,11 @@ struct QuizView: View {
                                 .font(.largeTitle)
                                 .bold()
                                 .foregroundColor(Color(uiColor: .systemGray4))
+                            Image(systemName: "hands.clap.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 65)
+                                .foregroundColor(.gray)
                             Button {
                                 selectStatus.setStatus(newStatus: .LIFE)
                             } label: {
