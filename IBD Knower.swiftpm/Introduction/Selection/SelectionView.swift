@@ -27,7 +27,8 @@ struct SelectionView: View {
                         .blur(radius: 4)
                     
                     Guideline() {
-                        IntroGuideContent()
+                        Text("INTRO DEMO")
+                            .foregroundColor(.gray)
                     }
                     
                     HStack(spacing: 0) {
