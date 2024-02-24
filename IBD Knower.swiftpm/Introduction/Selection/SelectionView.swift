@@ -26,6 +26,11 @@ struct SelectionView: View {
                     Color(selectStatus.bgColor)
                         .blur(radius: 4)
                     
+                    Guideline() {
+                        Text("INTRO DEMO")
+                            .foregroundColor(.gray)
+                    }
+                    
                     HStack(spacing: 0) {
                         Spacer()
                             .frame(width: geometry.size.width * 0.1)
