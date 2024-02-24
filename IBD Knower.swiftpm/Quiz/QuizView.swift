@@ -63,7 +63,8 @@ struct QuizView: View {
                                  animating: $animating, 
                                  question: questions[quesNo], 
                                  choices: choices[quesNo], 
-                                 answer: answers[quesNo])
+                                 answer: answers[quesNo], 
+                                 quesNo: quesNo)
                     .transition(
                         .asymmetric(
                             insertion: .movingParts.move(
@@ -82,7 +83,8 @@ struct QuizView: View {
                                  animating: $animating, 
                                  question: questions[quesNo], 
                                  choices: choices[quesNo], 
-                                 answer: answers[quesNo])
+                                 answer: answers[quesNo], 
+                                 quesNo: quesNo)
                     .transition(
                         .asymmetric(
                             insertion: .movingParts.move(
@@ -95,19 +97,29 @@ struct QuizView: View {
                     .disabled(animating)
                 }
                 if quesClear {
-                    VStack {
+                    VStack(spacing: 23) {
                         Group {
-                            Text("CLEAR!")
-                                .foregroundColor(.black)
-                            Button("Got it") {
+                            Text("CLEAR !")
+                                .font(.largeTitle)
+                                .bold()
+                                .foregroundColor(Color(uiColor: .systemGray4))
+                            Button {
                                 selectStatus.setStatus(newStatus: .LIFE)
+                            } label: {
+                                Text("NEXT")
+                                    .foregroundColor(.white)
+                                    .frame(width: 44.3, height: 16)
+                                    .padding()
+                                    .background(RoundedRectangle(cornerRadius: 18)
+                                        .foregroundColor(Color(uiColor: .systemBlue))
+                                            .shadow(radius: 3.2))
                             }
                         }
                         .padding()
                     }
                     .background(RoundedRectangle(cornerRadius: 21)
                         .foregroundColor(.white)
-                        .frame(width: 250, height: 250)
+                        .frame(width: 450, height: 350)
                         .shadow(radius: 12))
                 }
                 
@@ -148,7 +160,6 @@ struct QuizView: View {
             }
             .onChange(of: nextQuestion) {
                 withAnimation {
-                    
                     // However turn off the side which is true
                     let tmp = showQuesA ? true : false
                     withAnimation {

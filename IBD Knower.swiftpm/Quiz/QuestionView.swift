@@ -14,6 +14,7 @@ struct QuestionView: View {
     let question: String
     let choices: [String]
     let answer: Int
+    let quesNo: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -21,6 +22,11 @@ struct QuestionView: View {
             HStack {
                 Spacer()
                 VStack {
+                    Text("Question  \(quesNo+1) / 5")
+                        .font(.callout)
+                        .foregroundColor(.gray)
+                        .padding(.bottom, 4)
+                    
                     Text(question)
                         .fontWeight(.semibold)
                         .multilineTextAlignment(.leading)
@@ -52,7 +58,7 @@ struct QuestionView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + (1.35)) {
                             nextQues.toggle()
                         }
-                    } else {
+                    } else if !correct {
                         
                         // Call the HUD to display wrong hint
                         withAnimation {
@@ -72,6 +78,7 @@ struct QuestionView: View {
                         Text(choices[idx])
                             .font(.system(size: 22))
                             .foregroundColor(Color(uiColor: .white))
+                            .opacity(correct || wrong || animating ? 0.41 : 1)
                         Spacer()
                     }
                     .padding(12)
@@ -89,7 +96,7 @@ struct QuestionView: View {
                             .foregroundColor(.green)
                     }, value: correct)
             }
-            .disabled(correct || wrong)
+            .disabled(correct || wrong || animating)
             Spacer()
         }
     }

@@ -43,8 +43,11 @@ struct BlockView: View {
                                 .shadow(radius: 13)
                             HStack {
                                 Text(selectedTitle)
+                                    .font(.system(size: 18.8))
                                     .foregroundColor(.white)
-                                    .multilineTextAlignment(.leading)
+                                    .bold()
+                                    .multilineTextAlignment(.center)
+                                    .lineSpacing(4.6)
                                     .padding()
                                 Spacer()
                             }
@@ -67,6 +70,7 @@ struct BlockView: View {
                                       physical: physical, 
                                       mental: mental)
                     }
+                    .ignoresSafeArea()
                 }
             }
             .frame(height: 200)
