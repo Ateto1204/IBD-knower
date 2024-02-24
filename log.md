@@ -1,5 +1,12 @@
 # Project log
 
+#### 2024.02.24
+- Complete guideline for Home
+- Complete guideline for Introduction
+- Complete guideline for Quiz
+- Complete result tip for Quiz
+- Complete result tip for LifeMenu
+
 #### 2024.02.23
 - Make subproject of lifestyle menu enable work
 - Add lifestyle menu to IBD Knower
