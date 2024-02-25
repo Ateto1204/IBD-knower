@@ -2,6 +2,7 @@
 
 #### 2024.02.25
 - Add quit button to Quiz and LifeMenu
+- Submit the project to WWDC24 Swift Student Challenge
 
 #### 2024.02.24
 - Complete guideline for Home
