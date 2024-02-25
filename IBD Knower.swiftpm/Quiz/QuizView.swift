@@ -53,6 +53,8 @@ struct QuizView: View {
                 }
             }
             
+            QuitView()
+            
             ZStack(alignment: .bottom) {
                 
                 if showQuesA {

@@ -26,6 +26,8 @@ struct LifeMenuView: View {
         ZStack {
             Color(selectStatus.bgColor)
             
+            QuitView()
+            
             Guideline(guidePages: 2, guidePage: $guidePage) {
                 LifeGuideContent(guideStep: $guidePage)
             }
@@ -80,6 +82,7 @@ struct LifeMenuView: View {
                               physical: [0, 0, 0, -20], 
                               mental: [20, 15, 15, -20])
                 }
+                
                 Spacer()
                 
                 HStack {
