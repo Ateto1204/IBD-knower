@@ -4,6 +4,7 @@ import Pow
 
 struct QuizView: View {
     @EnvironmentObject var selectStatus: SelectStatus
+    @State var guidePage: Int = 1
     
     @State private var showQuesA = false
     @State private var showQuesB = false
@@ -47,7 +48,7 @@ struct QuizView: View {
             Color(selectStatus.themeColor)
             
             if !quesClear {
-                Guideline() {
+                Guideline(guidePages: 1, guidePage: $guidePage) {
                     QuizGuideContent()
                 }
             }
@@ -112,7 +113,8 @@ struct QuizView: View {
                             } label: {
                                 Text("NEXT")
                                     .foregroundColor(.white)
-                                    .frame(width: 44.3, height: 16)
+                                    .frame(width: 47.3, height: 16)
+                                    .bold()
                                     .padding()
                                     .background(RoundedRectangle(cornerRadius: 18)
                                         .foregroundColor(Color(uiColor: .systemBlue))
