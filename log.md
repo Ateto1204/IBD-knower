@@ -1,5 +1,8 @@
 # Project log
 
+#### 2024.02.25
+- Add quit button to Quiz and LifeMenu
+
 #### 2024.02.24
 - Complete guideline for Home
 - Complete guideline for Introduction
