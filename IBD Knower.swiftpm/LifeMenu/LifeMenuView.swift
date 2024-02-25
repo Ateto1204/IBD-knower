@@ -20,14 +20,14 @@ struct LifeMenuView: View {
     @State var workMental: Int = 0
     
     @State var isPressed: Bool = false
+    @State var guidePage: Int = 1
     
     var body: some View {
         ZStack {
             Color(selectStatus.bgColor)
             
-            Guideline() {
-                Text("LIFESTYLE DEMO")
-                    .foregroundColor(.gray)
+            Guideline(guidePages: 2, guidePage: $guidePage) {
+                LifeGuideContent(guideStep: $guidePage)
             }
             
             VStack {
@@ -91,7 +91,8 @@ struct LifeMenuView: View {
                     } label: {
                         Text("TRY IT")
                             .foregroundColor(.white)
-                            .frame(width: 53.6)
+                            .bold()
+                            .frame(width: 56.6)
                             .padding()
                             .background(
                                 RoundedRectangle(cornerRadius: 19)
@@ -118,6 +119,7 @@ struct LifeMenuView: View {
                                         Text("DONE")
                                             .foregroundColor(.white)
                                             .frame(width: 53.6, height: 16)
+                                            .bold()
                                             .padding()
                                             .background(RoundedRectangle(cornerRadius: 18)
                                                 .foregroundColor(Color(uiColor: .systemBlue))
@@ -136,8 +138,8 @@ struct LifeMenuView: View {
                         }
                     }
                     .disabled(!runable())
-                    Text("Physical: \(physicalSum()); Mental: \(mentalSum())")
-                        .foregroundColor(.gray)
+                    //Text("Physical: \(physicalSum()); Mental: \(mentalSum())")
+                     //   .foregroundColor(.gray)
                     Spacer()
                 }
                 .padding()

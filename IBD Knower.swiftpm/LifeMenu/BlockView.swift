@@ -32,9 +32,12 @@ struct BlockView: View {
                     isSelect.toggle()
                 } label: {
                     if !hasSelect {
-                        Text("+")
+                        Image(systemName: "plus.square.on.square")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40)
                             .foregroundColor(.gray)
-                            .font(.system(size: 42))
+                            .opacity(0.78)
                     } else {
                         ZStack {
                             RoundedRectangle(cornerRadius: 25)

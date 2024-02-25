@@ -59,14 +59,22 @@ struct BlockItemView: View {
                                         .foregroundColor(.white)
                                         .multilineTextAlignment(.leading)
                                         .padding()
-                                    HStack {
+                                    HStack(spacing: 26) {
                                         Group {
-                                            Text("Physical \(physical[idx] < 0 ? "" : "+") \(physical[idx])")
-                                            Text("Mental \(mental[idx] < 0 ? "" : "+") \(mental[idx])")
+                                            let flag1: Bool = physical[idx] < 0
+                                            let flag2: Bool = mental[idx] < 0
+                                            HStack(spacing: 6) {
+                                                Image(systemName: "dumbbell.fill")
+                                                Text("\(flag1 ? "-" : "+") \(flag1 ? -physical[idx] : physical[idx])")
+                                            }
+                                            HStack(spacing: 6) {
+                                                Image(systemName: "brain.fill")
+                                                Text("\(flag2 ? "-" : "+") \(flag2 ? -mental[idx] : mental[idx])")
+                                            }
                                         }
                                         .foregroundColor(.white)
-                                        .padding()
                                     }
+                                    .padding()
                                 }
                                 Spacer()
                             }

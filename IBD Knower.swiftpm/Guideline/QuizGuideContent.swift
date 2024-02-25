@@ -3,7 +3,7 @@ import SwiftUI
 struct QuizGuideContent: View {
     var body: some View {
         VStack {
-            Text("ABOUT")
+            Text("GUIDE")
                 .font(.largeTitle)
                 .bold()
                 .foregroundColor(.gray)
