@@ -1,5 +1,5 @@
 # IBD knower
-WWDC24 Swift Student Challenge (Developing)
+WWDC24 Swift Student Challenge (Submitted, Results will be announced in mid-April)
 
 ### Home Screen
 
