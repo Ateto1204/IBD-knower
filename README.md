@@ -1,6 +1,6 @@
 # IBD Knower
-WWDC24 Swift Student Challenge (Submitted)
-Results will be announced in mid-April
+WWDC24 Swift Student Challenge (Submitted)<br/>
+Results will be announced in mid-April.
 
 ### Home Screen
 
