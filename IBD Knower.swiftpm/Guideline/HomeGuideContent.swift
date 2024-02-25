@@ -9,7 +9,7 @@ struct HomeGuideContent: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("ABOUT")
+                Text("WELCOME")
                     .font(.largeTitle)
                     .bold()
                     .foregroundColor(.gray)
