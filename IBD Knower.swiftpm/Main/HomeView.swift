@@ -3,14 +3,16 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var selectStatus: SelectStatus
     
+    @State var guidePage: Int = 1
+    
     var body: some View {
         GeometryReader { geometry in 
             ZStack {
                 Color(selectStatus.bgColor)
                     .blur(radius: 6)
                 
-                Guideline() {
-                    HomeGuideContent()
+                Guideline(guidePages: 2, guidePage: $guidePage) {
+                    HomeGuideContent(guideStep: $guidePage)
                 }
                 
                 VStack {
