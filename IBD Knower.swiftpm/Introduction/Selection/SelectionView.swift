@@ -7,6 +7,7 @@ struct SelectionView: View {
     
     @State var offset: CGFloat = 0
     @State var selectItem: IntroItem = Definition()
+    @State var guidePage = 1
     
     let intro: [IntroItem] = [Definition(), 
                               Symptom(), 
@@ -26,7 +27,7 @@ struct SelectionView: View {
                     Color(selectStatus.bgColor)
                         .blur(radius: 4)
                     
-                    Guideline() {
+                    Guideline(guidePages: 1, guidePage: $guidePage) {
                         IntroGuideContent()
                     }
                     
@@ -209,8 +210,21 @@ struct SelectionView: View {
             }
             Spacer()
             HStack {
+                let swipeTip = SwipeTip()
+                let detailTip = DetailTip()
+                
                 borderPattern(geometry: geometry)
+                
+                TipView(swipeTip, arrowEdge: .leading)
+                    .tipBackground(Color(selectStatus.themeColor))
+                    .tint(.white)
+                    .offset(x: -72)
+                
                 Spacer()
+                TipView(detailTip, arrowEdge: .trailing)
+                    .tipBackground(Color(selectStatus.themeColor))
+                    .tint(.white)
+                
                 detailButton(geometry: geometry)
                     .onTapGesture {
                         selectStatus.setStatus(newStatus: .DETAIL)
