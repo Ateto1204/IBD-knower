@@ -38,7 +38,7 @@ WWDC24 Swift Student Challenge (Developing)
 </div>
 
 <div style="text-align:center;">
-  <img src="demoScreens/quiz2.jpg" alt="Image" style="width:600px;">
+  <img src="demoScreens/quiz2.PNG" alt="Image" style="width:600px;">
 </div>
 
 <div style="text-align:center;">
