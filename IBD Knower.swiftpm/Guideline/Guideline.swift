@@ -3,6 +3,8 @@ import SwiftUI
 struct Guideline<Content: View>: View {
     @EnvironmentObject var selectStatus: SelectStatus
     @State var showGuide: Bool = false
+    let guidePages: Int
+    @Binding var guidePage: Int
     
     @ViewBuilder let content: Content
     
@@ -30,7 +32,7 @@ struct Guideline<Content: View>: View {
                 .sheet(isPresented: $showGuide) {
                     ZStack {
                         Color(selectStatus.bgColor)
-                        GuidelineView(showGuide: $showGuide) {
+                        GuidelineView(showGuide: $showGuide, guidePages: guidePages, guidePage: $guidePage) {
                             content
                         }
                     }
@@ -54,6 +56,8 @@ struct Guideline<Content: View>: View {
 struct GuidelineView<Content: View>: View {
     @EnvironmentObject var selectStatus: SelectStatus
     @Binding var showGuide: Bool
+    let guidePages: Int
+    @Binding var guidePage: Int
     
     @ViewBuilder let content: Content
     
@@ -88,12 +92,19 @@ struct GuidelineView<Content: View>: View {
                 HStack {
                     Spacer()
                     Button {
-                        showGuide = false
+                        withAnimation {
+                            if guidePage < guidePages {
+                                guidePage += 1
+                            } else {
+                                guidePage = 1
+                                showGuide = false
+                            }
+                        }
                     } label: {
-                        Text("GOT IT")
+                        Text(guidePage < guidePages ? "CONTINUE" : "GOT IT")
                             .foregroundColor(.white)
                             .bold()
-                            .frame(width: 55.6, height: 16)
+                            .frame(width: 95.6, height: 16)
                             .padding()
                             .background(RoundedRectangle(cornerRadius: 10.9)
                                 .foregroundColor(Color(uiColor: .systemBlue))
@@ -102,9 +113,14 @@ struct GuidelineView<Content: View>: View {
                     Spacer()
                 }
                 .padding()
+                .background(Color(selectStatus.bgColor))
             }
             
         }
+        .background(Color(selectStatus.bgColor))
         .ignoresSafeArea()
+        .onAppear() {
+            guidePage = 1
+        }
     }
 }
