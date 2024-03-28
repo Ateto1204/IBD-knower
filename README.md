@@ -1,5 +1,8 @@
 # IBD Knower
-WWDC24 Swift Student Challenge (Submitted)<br/>
+- WWDC24 Swift Student Challenge (Submitted)
+- The APP introduces IBD (Inflammatory Bowel Disease).
+- Advocate to pay attention to patients’ psychological state and quality of life.
+
 
 ### Home Screen
 
